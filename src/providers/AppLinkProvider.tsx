@@ -6,6 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react'
+import Config from 'react-native-config'
 import { Linking } from 'react-native'
 import queryString from 'query-string'
 import { BarCodeScannerResult } from 'expo-barcode-scanner'
@@ -24,12 +25,10 @@ import {
 import { useAppDispatch } from '../store/store'
 import appSlice from '../store/user/appSlice'
 
-export const APP_LINK_PROTOCOL = 'makerappscheme://'
-
 export const createAppLink = (
   resource: AppLinkCategoryType,
   resourceId: string,
-) => `${APP_LINK_PROTOCOL}${resource}/${resourceId}`
+) => `${Config.APP_LINK_PROTOCOL}${resource}/${resourceId}`
 
 const useAppLink = () => {
   const [unhandledAppLink, setUnhandledLink] = useState<
@@ -115,7 +114,7 @@ const useAppLink = () => {
     if (!url) return
 
     const parsed = queryString.parseUrl(url)
-    if (!parsed.url.includes(APP_LINK_PROTOCOL)) return
+    if (!parsed.url.includes(Config.APP_LINK_PROTOCOL)) return
 
     const params = queryString.parse(queryString.extract(url))
     const record = AppLinkFields.reduce(
@@ -123,7 +122,7 @@ const useAppLink = () => {
       params,
     ) as AppLink
 
-    const path = parsed.url.replace(APP_LINK_PROTOCOL, '')
+    const path = parsed.url.replace(Config.APP_LINK_PROTOCOL, '')
     const [resourceType, ...rest] = path.split('/')
     if (resourceType && AppLinkCategories.find((k) => k === resourceType)) {
       record.type = resourceType as AppLinkCategoryType

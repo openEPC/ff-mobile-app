@@ -1,4 +1,5 @@
 import React, { memo, useCallback } from 'react'
+import Config from 'react-native-config'
 import { useTranslation } from 'react-i18next'
 import { WalletLink } from '@helium/react-native-sdk'
 import { Linking, Platform } from 'react-native'
@@ -18,8 +19,8 @@ const LinkAccount = () => {
         const url = WalletLink.createWalletLinkUrl({
           universalLink: app.universalLink,
           requestAppId: getBundleId(),
-          callbackUrl: 'makerappscheme://',
-          appName: 'Maker App',
+          callbackUrl: Config.APP_LINK_PROTOCOL,
+          appName: 'FreedomFi Helium App',
         })
 
         Linking.openURL(url)
