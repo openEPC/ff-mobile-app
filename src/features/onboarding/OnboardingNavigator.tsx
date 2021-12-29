@@ -11,11 +11,9 @@ const OnboardingStack = createStackNavigator<OnboardingStackParamList>()
 const Onboarding = () => {
   return (
     <OnboardingStack.Navigator
-      headerMode="none"
       screenOptions={
         Platform.OS === 'android' ? DefaultScreenOptions : undefined
       }
-      mode={Platform.OS === 'android' ? 'modal' : undefined}
     >
       <OnboardingStack.Screen name="Welcome" component={WelcomeScreen} />
 

@@ -8,10 +8,7 @@ const HotspotsStack = createStackNavigator<HotspotStackParamList>()
 
 const Hotspots = () => {
   return (
-    <HotspotsStack.Navigator
-      headerMode="none"
-      screenOptions={defaultScreenOptions}
-    >
+    <HotspotsStack.Navigator screenOptions={defaultScreenOptions}>
       <HotspotsStack.Screen name="HotspotsScreen" component={HotspotsScreen} />
     </HotspotsStack.Navigator>
   )

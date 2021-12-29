@@ -8,8 +8,7 @@ import defaultScreenOptions from './defaultScreenOptions'
 import HomeNav from './main/HomeNavigator'
 import { useColors } from '../theme/themeHooks'
 
-const OnboardingStack = createStackNavigator()
-const MainStack = createStackNavigator()
+const Stack = createStackNavigator()
 
 // NonAuth
 //  Welcome
@@ -34,25 +33,20 @@ const NavigationRoot = () => {
     changeNavigationBarColor(colors.primaryBackground, true, false)
   }, [colors.primaryBackground])
 
-  if (!walletLinkToken) {
-    return (
-      <OnboardingStack.Navigator
-        headerMode="none"
-        screenOptions={defaultScreenOptions}
-      >
-        <OnboardingStack.Screen
+  const notSignedIn = !walletLinkToken
+
+  return (
+    <Stack.Navigator screenOptions={defaultScreenOptions}>
+      {notSignedIn ? (
+        <Stack.Screen
           name="Onboarding"
           component={Onboarding}
           options={{ gestureEnabled: false }}
         />
-      </OnboardingStack.Navigator>
-    )
-  }
-
-  return (
-    <MainStack.Navigator headerMode="none" screenOptions={defaultScreenOptions}>
-      <MainStack.Screen name="MainTab" component={HomeNav} />
-    </MainStack.Navigator>
+      ) : (
+        <Stack.Screen name="MainTab" component={HomeNav} />
+      )}
+    </Stack.Navigator>
   )
 }
 

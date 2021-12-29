@@ -16,10 +16,7 @@ const HotspotSetupStack = createStackNavigator<HotspotSetupStackParamList>()
 
 const HotspotSetup = () => {
   return (
-    <HotspotSetupStack.Navigator
-      headerMode="none"
-      screenOptions={{ ...defaultScreenOptions }}
-    >
+    <HotspotSetupStack.Navigator screenOptions={{ ...defaultScreenOptions }}>
       <HotspotSetupStack.Screen
         name="HotspotSetupExternalScreen"
         component={HotspotSetupExternalScreen}

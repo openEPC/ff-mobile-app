@@ -2819,48 +2819,55 @@
   resolved "https://registry.yarnpkg.com/@react-native/polyfills/-/polyfills-2.0.0.tgz#4c40b74655c83982c8cf47530ee7dc13d957b6aa"
   integrity sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==
 
-"@react-navigation/bottom-tabs@5.11.3":
-  version "5.11.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-5.11.3.tgz#8f918954d22217696bc9d947ad441e207458a1e8"
-  integrity sha512-ez79zP21wtuHcnIm96fld4MXc9oOSpJCG78MTo/Jw+yZxZsQdF4N55ABiLfaQ/48QyZr8cfi0GkP/AYheZwm6A==
+"@react-navigation/bottom-tabs@6.0.9":
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-6.0.9.tgz#916b6a4b495ea8fdcace98dab727064876875d09"
+  integrity sha512-uRoq6Zd7lPNnLqNQkKC28eR62tpqcDeuakZU1sO8N46FtvrcTuNLoIlssrGty3GF7ALBIxCypn4A93t3nbmMrQ==
   dependencies:
+    "@react-navigation/elements" "^1.2.1"
     color "^3.1.3"
-    react-native-iphone-x-helper "^1.3.0"
+    warn-once "^0.1.0"
 
-"@react-navigation/core@^5.15.3":
-  version "5.15.3"
-  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.15.3.tgz#dce7090bf3ea0d302993d742c706825e495b812e"
-  integrity sha512-3ZdyDInh8qg1kygCNkmh9lFgpDf29lTvPsaMe2mm/qvmxLKSgttWBz07P2fc181aV9jTdgQpzYfWZ5KWT036zw==
+"@react-navigation/core@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-6.1.0.tgz#95fbf54d78ad0ed976cb73219f0c0199775a1d26"
+  integrity sha512-LyZqD/ZCXSK9+ES8KiH+0tU+7aL84jUw1N9OxZfEuns/OcnSXKC3sOO+9NQ9XRowB1wLUfJhmqZ8G8rUlg33fQ==
   dependencies:
-    "@react-navigation/routers" "^5.7.2"
+    "@react-navigation/routers" "^6.1.0"
     escape-string-regexp "^4.0.0"
-    nanoid "^3.1.15"
-    query-string "^6.13.6"
+    nanoid "^3.1.23"
+    query-string "^7.0.0"
     react-is "^16.13.0"
 
-"@react-navigation/native@^5.8.4":
-  version "5.9.4"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.9.4.tgz#414c044423c58aa1cdde1b6494309e0b51da08b8"
-  integrity sha512-BUCrOXfZDdKWBqM8OhOKQhCX5we4HUo5XG6tCQtVqQAep+7UcApZmMUuemUXDxVe8NPESUpoUlB0RaEpyIdfTQ==
+"@react-navigation/elements@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.2.1.tgz#86f19781c6f34a5c9dd25dca99915e0306f477d1"
+  integrity sha512-EnmAbKMsptrliRKf95rdgS6BhMjML+mIns06+G1Vdih6BrEo7/0iytThUv3WBf99AI76dyEq/cqLUwHPiFzXWg==
+
+"@react-navigation/native@^6.0.6":
+  version "6.0.6"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.6.tgz#0f2577358d73d7b21ff5b2455f0a2d51b1ad2837"
+  integrity sha512-XzL7YPsaRRQgdCQSXbA8PJWLN2I4lhUUvSFoKQPNO4DS6y8eqZI1V8COPYlJg8+tsetGV5J8jt+jVjWL7h6ZrQ==
   dependencies:
-    "@react-navigation/core" "^5.15.3"
+    "@react-navigation/core" "^6.1.0"
     escape-string-regexp "^4.0.0"
-    nanoid "^3.1.15"
+    nanoid "^3.1.23"
 
-"@react-navigation/routers@^5.7.2":
-  version "5.7.2"
-  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-5.7.2.tgz#069d0a707b30ba2e27a32b6482531d0ff7317136"
-  integrity sha512-BxNSMLHpU+oS37Xok0ql6rc9U7IC8aUD4+U5ZPbjDJ0pwzZxGGh0YOEBzfV4k/Ig3cbPdvVWbc1C9HHbCVr2oQ==
+"@react-navigation/routers@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/routers/-/routers-6.1.0.tgz#d5682be88f1eb7809527c48f9cd3dedf4f344e40"
+  integrity sha512-8xJL+djIzpFdRW/sGlKojQ06fWgFk1c5jER9501HYJ12LF5DIJFr/tqBI2TJ6bk+y+QFu0nbNyeRC80OjRlmkA==
   dependencies:
-    nanoid "^3.1.15"
+    nanoid "^3.1.23"
 
-"@react-navigation/stack@^5.12.1":
-  version "5.14.4"
-  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-5.14.4.tgz#32f6717c03494f0ca6cf0dd43d8302af824de9e9"
-  integrity sha512-gQjWK8JHtVkD1p7wzjtSPuScJI0mSAk/N/gzgjQZo+rDUwgM8rOTDcVNRbtEOqCEgLQcZrZQHwhOjkrJirehjQ==
+"@react-navigation/stack@^6.0.11":
+  version "6.0.11"
+  resolved "https://registry.yarnpkg.com/@react-navigation/stack/-/stack-6.0.11.tgz#9a94089da7a6bb6b41084c2b9e88ef542d41345d"
+  integrity sha512-Osc2mXi0Zh/u92HRCceDqVfVnypTa2sZgYMJDU+vDhHz38negtbCG+cjje6nApSjwC5WTVhYP4OoD5WBSh51+g==
   dependencies:
+    "@react-navigation/elements" "^1.2.1"
     color "^3.1.3"
-    react-native-iphone-x-helper "^1.3.0"
+    warn-once "^0.1.0"
 
 "@reduxjs/toolkit@^1.4.0":
   version "1.5.1"
@@ -9737,7 +9744,7 @@ mz@^2.7.0:
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
 
-nanoid@^3.1.15, nanoid@^3.1.20:
+nanoid@^3.1.20:
   version "3.1.22"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
   integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
@@ -10632,16 +10639,6 @@ qs@^6.9.3, qs@^6.9.6:
   dependencies:
     side-channel "^1.0.4"
 
-query-string@^6.13.6:
-  version "6.14.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.14.1.tgz#7ac2dca46da7f309449ba0f86b1fd28255b0c86a"
-  integrity sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==
-  dependencies:
-    decode-uri-component "^0.2.0"
-    filter-obj "^1.1.0"
-    split-on-first "^1.0.0"
-    strict-uri-encode "^2.0.0"
-
 query-string@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-7.0.0.tgz#aaad2c8d5c6a6d0c6afada877fecbd56af79e609"
@@ -10793,7 +10790,7 @@ react-native-get-random-values@~1.7.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-iphone-x-helper@^1.0.3, react-native-iphone-x-helper@^1.3.0:
+react-native-iphone-x-helper@^1.0.3:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
   integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
