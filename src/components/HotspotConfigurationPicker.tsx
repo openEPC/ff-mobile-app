@@ -11,16 +11,15 @@ import Box from './Box'
 import Text from './Text'
 import TouchableOpacityBox from './TouchableOpacityBox'
 import InfoIcon from '../assets/images/info-hollow.svg'
-import { decimalSeparator, groupSeparator, locale } from '../utils/i18n'
+import { decimalSeparator, groupSeparator, locale } from '../i18n'
 import { useColors } from '../theme/themeHooks'
-import { AntennaModelKeys, AntennaModels } from '../makers'
-import { MakerAntenna } from '../makers/antennaMakerTypes'
+import { Antenna, defaultAntenna } from '../types/Antenna'
 
 type Props = {
-  onAntennaUpdated: (antenna: MakerAntenna) => void
+  onAntennaUpdated: (antenna: Antenna) => void
   onGainUpdated: (gain: number) => void
   onElevationUpdated: (elevation: number) => void
-  selectedAntenna?: MakerAntenna
+  selectedAntenna?: Antenna
   outline?: boolean
 }
 const HotspotConfigurationPicker = ({
@@ -46,12 +45,13 @@ const HotspotConfigurationPicker = ({
   )
 
   const antennas = useMemo(
-    () =>
-      AntennaModelKeys.map((k) => ({
-        ...AntennaModels[k],
-        label: AntennaModels[k].name,
-        value: AntennaModels[k].name,
-      })),
+    () => [
+      {
+        ...defaultAntenna,
+        label: defaultAntenna.name,
+        value: defaultAntenna.name,
+      },
+    ],
     [],
   )
 

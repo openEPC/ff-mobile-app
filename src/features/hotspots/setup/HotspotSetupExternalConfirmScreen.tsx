@@ -72,7 +72,6 @@ const HotspotSetupExternalConfirmScreen = () => {
       addGatewayTxn: params.addGatewayTxn,
       hotspotAddress: publicKey,
       onboardingRecord,
-      hotspotType: params.hotspotType,
     })
   }, [navigation, onboardingRecord, params, publicKey])
 

@@ -7,7 +7,7 @@ import SafeAreaBox from '../../components/SafeAreaBox'
 import Text from '../../components/Text'
 import Box from '../../components/Box'
 import TouchableOpacityBox from '../../components/TouchableOpacityBox'
-import { locale } from '../../utils/i18n'
+import { locale } from '../../i18n'
 
 const CreateAccount = () => {
   const { t } = useTranslation()

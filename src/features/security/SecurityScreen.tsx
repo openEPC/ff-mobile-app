@@ -58,6 +58,8 @@ const SecurityScreen = ({ visible }: Props) => {
     return null
   }
 
+  console.log('!!!!!SECURITY SCREEN!!!!!')
+
   return (
     <Box
       position="absolute"
@@ -67,6 +69,7 @@ const SecurityScreen = ({ visible }: Props) => {
       bottom={0}
       backgroundColor="primaryBackground"
     >
+      <h1>Locked</h1>
       <AnimatedImage
         style={style}
         source={require('../../assets/images/SplashScreen.png')}

@@ -9,7 +9,6 @@ import React, {
 import Config from 'react-native-config'
 import { Linking } from 'react-native'
 import queryString from 'query-string'
-import { BarCodeScannerResult } from 'expo-barcode-scanner'
 import { useSelector } from 'react-redux'
 import useMount from '../utils/useMount'
 import { RootState } from '../store/rootReducer'
@@ -137,29 +136,18 @@ const useAppLink = () => {
     return record
   }, [])
 
-  const parseData = useCallback(
-    (data: string, _scanType: AppLinkCategoryType): AppLink => {
-      const urlParams = parseUrl(data)
-      if (!urlParams) {
-        throw new Error('Invalid Link')
-      }
-      return urlParams
-    },
-    [parseUrl],
-  )
+  // const parseData = useCallback(
+  //   (data: string, _scanType: AppLinkCategoryType): AppLink => {
+  //     const urlParams = parseUrl(data)
+  //     if (!urlParams) {
+  //       throw new Error('Invalid Link')
+  //     }
+  //     return urlParams
+  //   },
+  //   [parseUrl],
+  // )
 
-  const handleBarCode = useCallback(
-    (
-      { data }: BarCodeScannerResult,
-      scanType: AppLinkCategoryType,
-      opts?: Record<string, string>,
-    ) => {
-      const scanResult = parseData(data, scanType)
-
-      navToAppLink({ ...scanResult, ...opts })
-    },
-    [navToAppLink, parseData],
-  )
+  const handleBarCode = () => {}
 
   return { handleBarCode }
 }

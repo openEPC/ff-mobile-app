@@ -75,7 +75,7 @@ const palette = {
   bobcatGrey: '#aeaeae',
 }
 
-export const lightThemeColors = {
+export const themeColors = {
   ...palette,
 
   primary: palette.bobcatRed,
@@ -92,26 +92,9 @@ export const lightThemeColors = {
   surfaceContrast: palette.bobcatDarkGrey,
   surfaceContrastText: palette.white,
 }
-export const darkThemeColors = {
-  ...palette,
-
-  primary: palette.bobcatRed,
-  primaryBackground: palette.black,
-  primaryText: palette.white,
-  secondaryBackground: palette.bobcatDarkGrey,
-  secondary: palette.bobcatDarkGrey,
-  secondaryText: palette.white,
-  error: palette.bobcatRed,
-  surface: palette.bobcatDarkGrey,
-  surfaceText: palette.white,
-  surfaceSecondary: palette.offWhite,
-  surfaceSecondaryText: palette.bobcatDarkGrey,
-  surfaceContrast: palette.white,
-  surfaceContrastText: palette.bobcatDarkGrey,
-}
 
 export const theme = createTheme({
-  colors: lightThemeColors,
+  colors: themeColors,
   spacing: {
     n_xxxxl: -240,
     n_xxxl: -120,

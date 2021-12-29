@@ -1,76 +1,36 @@
 import React, { useCallback, useMemo, useState } from 'react'
-import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import Config from 'react-native-config'
+import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import Icon from '@assets/images/placeholder.svg'
-import {
-  BarCodeScanner,
-  BarCodeScannerResult,
-  usePermissions,
-} from 'expo-barcode-scanner'
-import { Camera } from 'expo-camera'
-import { useDebouncedCallback } from 'use-debounce/lib'
 import Toast from 'react-native-simple-toast'
-import { StyleSheet, Linking, ScrollView } from 'react-native'
+import { Linking, ScrollView } from 'react-native'
 import Clipboard from '@react-native-community/clipboard'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import BackScreen from '../../../components/BackScreen'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
-import { HotspotSetupStackParamList } from './hotspotSetupTypes'
 import { useColors, useBorderRadii } from '../../../theme/themeHooks'
 import { getAddress } from '../../../utils/secureAccount'
-import { useAppLinkContext } from '../../../providers/AppLinkProvider'
 import useHaptic from '../../../utils/useHaptic'
 import { RootNavigationProp } from '../../../navigation/main/tabTypes'
-import { HotspotMakerModels } from '../../../makers'
 import useMount from '../../../utils/useMount'
-
-type Route = RouteProp<HotspotSetupStackParamList, 'HotspotSetupExternalScreen'>
 
 const HotspotSetupExternalScreen = () => {
   const { t } = useTranslation()
-  const { params } = useRoute<Route>()
   const colors = useColors()
   const { xl } = useBorderRadii()
   const [address, setAddress] = useState<string>()
-  const { handleBarCode } = useAppLinkContext()
   const { triggerNotification } = useHaptic()
   const navigation = useNavigation<RootNavigationProp>()
-
-  const [perms] = usePermissions({
-    request: true,
-  })
 
   useMount(() => {
     getAddress().then(setAddress)
   })
 
-  const isQr = useMemo(
-    () => HotspotMakerModels[params.hotspotType].onboardType === 'QR',
-    [params.hotspotType],
-  )
-
   const handleClose = useCallback(() => navigation.navigate('MainTabs'), [
     navigation,
   ])
-
-  const handleBarCodeScanned = useDebouncedCallback(
-    (result: BarCodeScannerResult) => {
-      try {
-        handleBarCode(result, 'add_gateway', {
-          hotspotType: params.hotspotType,
-        })
-        triggerNotification('success')
-      } catch (error) {
-        if (error.message) {
-          Toast.showWithGravity(error.message, Toast.LONG, Toast.CENTER)
-        }
-        triggerNotification('error')
-      }
-    },
-    1000,
-    { leading: true, trailing: false },
-  )
 
   const copyAddress = useCallback(() => {
     Clipboard.setString(address || '')
@@ -95,10 +55,7 @@ const HotspotSetupExternalScreen = () => {
   )
 
   const linkToMaker = useMemo(() => {
-    const { onboardUrl } = HotspotMakerModels[params.hotspotType]
-
-    if (!onboardUrl) return null
-    const url = onboardUrl.replace(/WALLET/, address || '')
+    const url = Config.ONBOARD_URL.replace(/WALLET/, address || '')
     return (
       <TouchableOpacity onPress={openMakerUrl(url)}>
         <Text
@@ -113,10 +70,10 @@ const HotspotSetupExternalScreen = () => {
         </Text>
       </TouchableOpacity>
     )
-  }, [address, openMakerUrl, params.hotspotType])
+  }, [address, openMakerUrl])
 
   const subtitle = useMemo(() => {
-    const onboard = t(`makerHotspot.${params.hotspotType}.externalOnboard`, {
+    const onboard = t('makerHotspot.web.externalOnboard', {
       returnObjects: true,
     })
 
@@ -128,10 +85,10 @@ const HotspotSetupExternalScreen = () => {
       return onboard
     }
     return ''
-  }, [params.hotspotType, t])
+  }, [t])
 
   const additionalPhrases = useMemo(() => {
-    const onboard = t(`makerHotspot.${params.hotspotType}.externalOnboard`, {
+    const onboard = t('makerHotspot.web.externalOnboard', {
       returnObjects: true,
     })
 
@@ -140,7 +97,7 @@ const HotspotSetupExternalScreen = () => {
       const [, ...rest] = onboard
       return rest
     }
-  }, [params.hotspotType, t])
+  }, [t])
 
   const scrollViewStyle = useMemo(() => ({ borderRadius: xl }), [xl])
 
@@ -169,7 +126,7 @@ const HotspotSetupExternalScreen = () => {
           adjustsFontSizeToFit
           marginTop="s"
         >
-          {t(`hotspot_setup.external.${isQr ? 'qr' : 'web'}Title`)}
+          {t('hotspot_setup.external.webTitle')}
         </Text>
         <Text
           variant="subtitle1"
@@ -198,28 +155,6 @@ const HotspotSetupExternalScreen = () => {
           </Text>
         </TouchableOpacity>
 
-        {isQr && perms?.granted && (
-          <>
-            <Box flex={1} />
-            <Box
-              marginTop="m"
-              borderRadius="xl"
-              overflow="hidden"
-              width="100%"
-              aspectRatio={1}
-              backgroundColor="black"
-            >
-              <Camera
-                barCodeScannerSettings={{
-                  barCodeTypes: [BarCodeScanner.Constants.BarCodeType.qr],
-                }}
-                onBarCodeScanned={handleBarCodeScanned.callback}
-                ratio="1:1"
-                style={StyleSheet.absoluteFill}
-              />
-            </Box>
-          </>
-        )}
         {additionalPhrases &&
           additionalPhrases.map((phrase, idx) => (
             <Text

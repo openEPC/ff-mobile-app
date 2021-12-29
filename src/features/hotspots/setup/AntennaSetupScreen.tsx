@@ -1,7 +1,6 @@
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import { getCountry } from 'react-native-localize'
 import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 import Box from '../../../components/Box'
 import {
@@ -12,9 +11,7 @@ import BackScreen from '../../../components/BackScreen'
 import Text from '../../../components/Text'
 import { DebouncedButton } from '../../../components/Button'
 import HotspotConfigurationPicker from '../../../components/HotspotConfigurationPicker'
-import { MakerAntenna } from '../../../makers/antennaMakerTypes'
-import Example from '../../../makers/example'
-import { HotspotMakerModels } from '../../../makers'
+import { Antenna, defaultAntenna } from '../../../types/Antenna'
 import { RootNavigationProp } from '../../../navigation/main/tabTypes'
 
 type Route = RouteProp<HotspotSetupStackParamList, 'AntennaSetupScreen'>
@@ -27,21 +24,7 @@ const AntennaSetupScreen = () => {
 
   const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
 
-  const defaultAntenna = useMemo(() => {
-    const country = getCountry()
-    const isUS = country === 'US'
-    const makerAntenna =
-      HotspotMakerModels[params.hotspotType || 'ExampleHotspotBLE'].antenna
-    const ant =
-      isUS && makerAntenna?.us ? makerAntenna.us : makerAntenna?.default
-
-    if (!ant)
-      return isUS ? Example.antennas.EXAMPLE_US : Example.antennas.EXAMPLE_US
-
-    return ant
-  }, [params.hotspotType])
-
-  const [antenna, setAntenna] = useState<MakerAntenna>(defaultAntenna)
+  const [antenna, setAntenna] = useState<Antenna>(defaultAntenna)
   const [gain, setGain] = useState<number>(defaultAntenna.gain)
   const [elevation, setElevation] = useState<number>(0)
 

@@ -11,6 +11,21 @@ import { useColors } from '../theme/themeHooks'
 const OnboardingStack = createStackNavigator()
 const MainStack = createStackNavigator()
 
+// NonAuth
+//  Welcome
+//  LinkAcc
+//  CreateAcc
+// Auth
+//  Lock
+//  Tabs
+//    Hotspots
+//    More
+//      Settings
+//      CreatePin
+//      ConfirmPin
+//  HotspotSetup
+//
+
 const NavigationRoot = () => {
   const { walletLinkToken } = useSelector((state: RootState) => state.app)
   const colors = useColors()

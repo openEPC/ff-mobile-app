@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import {
+  MoreNavigationProp,
+  MoreStackParamList,
+} from 'src/features/moreTab/moreTypes'
 import Text from '../../../components/Text'
 import PinDisplay from '../../../components/PinDisplay'
 import Keypad from '../../../components/Keypad'
-import {
-  OnboardingNavigationProp,
-  OnboardingStackParamList,
-} from '../onboardingTypes'
 import Box from '../../../components/Box'
 
-type Route = RouteProp<OnboardingStackParamList, 'AccountCreatePinScreen'>
+type Route = RouteProp<MoreStackParamList, 'AccountCreatePinScreen'>
 const AccountCreatePinScreen = () => {
   const { t } = useTranslation()
   const {
     params: { fromImport, pinReset } = { fromImport: false, pinReset: false },
   } = useRoute<Route>()
-  const navigation = useNavigation<OnboardingNavigationProp>()
+  const navigation = useNavigation<MoreNavigationProp>()
 
   const [pin, setPin] = useState('')
 

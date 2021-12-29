@@ -2,12 +2,8 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import * as RNLocalize from 'react-native-localize'
 import { useCallback, useEffect, useState } from 'react'
-import en from '../../locales/en'
-import ko from '../../locales/ko'
-import ja from '../../locales/ja'
-import zh from '../../locales/zh'
-import { getSecureItem, setSecureItem } from '../secureAccount'
-import { getTranslations } from '../../makers'
+import en from './en'
+import { getSecureItem, setSecureItem } from '../utils/secureAccount'
 
 const locales = RNLocalize.getLocales()
 
@@ -24,14 +20,9 @@ if (Array.isArray(locales)) {
   phoneLocale = locales[0].languageTag
 }
 
-const hotspotMakerTranslations = getTranslations()
-
 i18n.use(initReactI18next).init({
   resources: {
-    ko: { translation: { ...ko, makerHotspot: hotspotMakerTranslations.ko } },
-    en: { translation: { ...en, makerHotspot: hotspotMakerTranslations.en } },
-    zh: { translation: { ...zh, makerHotspot: hotspotMakerTranslations.zh } },
-    ja: { translation: { ...ja, makerHotspot: hotspotMakerTranslations.ko } },
+    en: { translation: en },
   },
   lng: phoneLang,
   fallbackLng: ['en'],

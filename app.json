@@ -1,6 +1,6 @@
 {
   "name": "FreedomFiHeliumApp",
-  "displayName": "Maker App",
+  "displayName": "FreedomFi Helium App",
   "expo": {
     "scheme": "freedomfihelium"
   }

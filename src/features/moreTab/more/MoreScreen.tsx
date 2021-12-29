@@ -28,7 +28,7 @@ import MoreListItem, { MoreListItemType } from './MoreListItem'
 import useAuthIntervals from './useAuthIntervals'
 import { useSpacing } from '../../../theme/themeHooks'
 import Box from '../../../components/Box'
-import { SUPPORTED_LANGUAGUES } from '../../../utils/i18n/i18nTypes'
+import { SUPPORTED_LANGUAGUES } from '../../../i18n/i18nTypes'
 import { useLanguageContext } from '../../../providers/LanguageProvider'
 import { getSecureItem } from '../../../utils/secureAccount'
 
