@@ -4,10 +4,10 @@ import { RouteProp, useRoute, useNavigation } from '@react-navigation/native'
 import {
   MoreNavigationProp,
   MoreStackParamList,
-} from 'src/features/moreTab/moreTypes'
-import appSlice from '../../../store/user/appSlice'
-import { useAppDispatch } from '../../../store/store'
-import ConfirmPinView from '../../../components/ConfirmPinView'
+} from '../../navigation/moreNavigatorTypes'
+import appSlice from '../../store/user/appSlice'
+import { useAppDispatch } from '../../store/store'
+import ConfirmPinView from '../../components/ConfirmPinView'
 
 type Route = RouteProp<MoreStackParamList, 'AccountConfirmPinScreen'>
 

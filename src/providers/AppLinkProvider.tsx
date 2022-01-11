@@ -10,9 +10,11 @@ import Config from 'react-native-config'
 import { Linking } from 'react-native'
 import queryString from 'query-string'
 import { useSelector } from 'react-redux'
+import { useNavigation } from '@react-navigation/native'
+
+import { RootNavigationProp } from 'src/navigation/NavigationRoot'
 import useMount from '../utils/useMount'
 import { RootState } from '../store/rootReducer'
-import navigator from '../navigation/navigator'
 import {
   AppLink,
   AppLinkFields,
@@ -33,6 +35,8 @@ const useAppLink = () => {
   const [unhandledAppLink, setUnhandledLink] = useState<
     AppLink | WalletLink | null
   >(null)
+
+  const rootNavigation = useNavigation<RootNavigationProp>()
 
   const {
     app: { isLocked },
@@ -72,7 +76,10 @@ const useAppLink = () => {
           const { resource: txnStr } = record as AppLink
           if (!txnStr) return
 
-          navigator.confirmAddGateway(txnStr)
+          rootNavigation.navigate('HotspotSetup', {
+            screen: 'HotspotSetupExternalConfirmScreen',
+            params: { addGatewayTxn: txnStr },
+          })
           break
         }
         case 'link_wallet': {
@@ -87,18 +94,21 @@ const useAppLink = () => {
         case 'sign_hotspot': {
           const hotspotLink = record as HotspotLink
           if (hotspotLink.status === 'success') {
-            navigator.submitGatewayTxns(hotspotLink)
+            rootNavigation.navigate('HotspotSetup', {
+              screen: 'HotspotTxnsSubmitScreen',
+              params: hotspotLink,
+            })
           } else {
             // TODO: handle failure status codes
             // eslint-disable-next-line no-console
             console.error(`Failed with status ${hotspotLink.status}`)
-            navigator.goToMainTabs()
+            rootNavigation.navigate('MainTabs')
           }
           break
         }
       }
     },
-    [isLocked, dispatch],
+    [isLocked, dispatch, rootNavigation],
   )
 
   useEffect(() => {

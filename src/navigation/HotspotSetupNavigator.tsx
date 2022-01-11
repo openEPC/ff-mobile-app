@@ -1,22 +1,22 @@
 import * as React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import defaultScreenOptions from '../../../navigation/defaultScreenOptions'
-import HotspotSetupLocationInfoScreen from './HotspotSetupLocationInfoScreen'
-import HotspotSetupPickLocationScreen from './HotspotSetupPickLocationScreen'
-import HotspotTxnsProgressScreen from './HotspotTxnsProgressScreen'
-import HotspotSetupConfirmLocationScreen from './HotspotSetupConfirmLocationScreen'
-import HotspotSetupSkipLocationScreen from './HotspotSetupSkipLocationScreen'
-import AntennaSetupScreen from './AntennaSetupScreen'
-import HotspotSetupExternalScreen from './HotspotSetupExternalScreen'
-import HotspotSetupExternalConfirmScreen from './HotspotSetupExternalConfirmScreen'
-import HotspotTxnsSubmitScreen from './HotspotTxnsSubmitScreen'
-import { HotspotSetupStackParamList } from './hotspotSetupTypes'
+
+import HotspotSetupLocationInfoScreen from '../features/hotspots/setup/HotspotSetupLocationInfoScreen'
+import HotspotSetupPickLocationScreen from '../features/hotspots/setup/HotspotSetupPickLocationScreen'
+import HotspotTxnsProgressScreen from '../features/hotspots/setup/HotspotTxnsProgressScreen'
+import HotspotSetupConfirmLocationScreen from '../features/hotspots/setup/HotspotSetupConfirmLocationScreen'
+import HotspotSetupSkipLocationScreen from '../features/hotspots/setup/HotspotSetupSkipLocationScreen'
+import AntennaSetupScreen from '../features/hotspots/setup/AntennaSetupScreen'
+import HotspotSetupExternalScreen from '../features/hotspots/setup/HotspotSetupExternalScreen'
+import HotspotSetupExternalConfirmScreen from '../features/hotspots/setup/HotspotSetupExternalConfirmScreen'
+import HotspotTxnsSubmitScreen from '../features/hotspots/setup/HotspotTxnsSubmitScreen'
+import { HotspotSetupStackParamList } from './hotspotSetupNavigatorTypes'
 
 const HotspotSetupStack = createStackNavigator<HotspotSetupStackParamList>()
 
 const HotspotSetup = () => {
   return (
-    <HotspotSetupStack.Navigator screenOptions={{ ...defaultScreenOptions }}>
+    <HotspotSetupStack.Navigator>
       <HotspotSetupStack.Screen
         name="HotspotSetupExternalScreen"
         component={HotspotSetupExternalScreen}

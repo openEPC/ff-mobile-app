@@ -26,7 +26,7 @@ import sleep from '../../../utils/sleep'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
-} from './hotspotSetupTypes'
+} from '../../../navigation/hotspotSetupNavigatorTypes'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 import TouchableOpacityBox from '../../../components/TouchableOpacityBox'
 import { useColors, useSpacing } from '../../../theme/themeHooks'

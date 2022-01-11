@@ -5,10 +5,10 @@ import { useAsync } from 'react-async-hook'
 import Box from '../../../components/Box'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
 import SafeAreaBox from '../../../components/SafeAreaBox'
-import { HotspotSetupStackParamList } from './hotspotSetupTypes'
 import { submitTxn } from '../../../utils/appDataClient'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import { HotspotSetupStackParamList } from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<HotspotSetupStackParamList, 'HotspotTxnsSubmitScreen'>
 

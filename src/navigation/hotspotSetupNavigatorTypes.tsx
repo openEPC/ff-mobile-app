@@ -1,5 +1,5 @@
-import { StackNavigationProp } from '@react-navigation/stack'
 import { Onboarding } from '@helium/react-native-sdk'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 export type HotspotSetupStackParamList = {
   HotspotSetupExternalScreen: undefined

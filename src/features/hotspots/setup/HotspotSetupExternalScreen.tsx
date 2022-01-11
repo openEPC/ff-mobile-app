@@ -13,7 +13,7 @@ import Text from '../../../components/Text'
 import { useColors, useBorderRadii } from '../../../theme/themeHooks'
 import { getAddress } from '../../../utils/secureAccount'
 import useHaptic from '../../../utils/useHaptic'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import useMount from '../../../utils/useMount'
 
 const HotspotSetupExternalScreen = () => {

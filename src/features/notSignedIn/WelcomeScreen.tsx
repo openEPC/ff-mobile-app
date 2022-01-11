@@ -1,16 +1,16 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import Text from '../../../components/Text'
-import { OnboardingNavigationProp } from '../onboardingTypes'
-import Box from '../../../components/Box'
-import TextTransform from '../../../components/TextTransform'
-import SafeAreaBox from '../../../components/SafeAreaBox'
-import TouchableOpacityBox from '../../../components/TouchableOpacityBox'
+import Text from '../../components/Text'
+import { RootNavigationProp } from '../../navigation/navigationRootTypes'
+import Box from '../../components/Box'
+import TextTransform from '../../components/TextTransform'
+import SafeAreaBox from '../../components/SafeAreaBox'
+import TouchableOpacityBox from '../../components/TouchableOpacityBox'
 
 const WelcomeScreen = () => {
   const { t } = useTranslation()
-  const navigation = useNavigation<OnboardingNavigationProp>()
+  const navigation = useNavigation<RootNavigationProp>()
 
   const createAccount = useCallback(() => navigation.push('CreateAccount'), [
     navigation,

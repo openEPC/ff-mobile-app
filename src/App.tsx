@@ -18,7 +18,6 @@ import appSlice, { restoreAppSettings } from './store/user/appSlice'
 import { RootState } from './store/rootReducer'
 import SecurityScreen from './features/security/SecurityScreen'
 import AppLinkProvider from './providers/AppLinkProvider'
-import { navigationRef } from './navigation/navigator'
 import useMount from './utils/useMount'
 
 SplashScreen.preventAutoHideAsync().catch(() => {
@@ -111,7 +110,7 @@ const App = () => {
               backgroundColor="transparent"
             />
           )}
-          <NavigationContainer ref={navigationRef}>
+          <NavigationContainer>
             <AppLinkProvider>
               <NavigationRoot />
             </AppLinkProvider>

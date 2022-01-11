@@ -1,21 +1,16 @@
 import * as React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { Platform } from 'react-native'
-import { MoreStackParamList } from './moreTypes'
-import DefaultScreenOptions from '../../navigation/defaultScreenOptions'
-import MoreScreen from './more/MoreScreen'
-import AccountCreatePinScreen from '../onboarding/accountCreatePin/AccountCreatePinScreen'
-import AccountConfirmPinScreen from '../onboarding/accountConfirmPin/AccountConfirmPinScreen'
+
+import MoreScreen from '../features/moreTab/MoreScreen'
+import AccountCreatePinScreen from '../features/moreTab/AccountCreatePinScreen'
+import AccountConfirmPinScreen from '../features/moreTab/AccountConfirmPinScreen'
+import { MoreStackParamList } from './moreNavigatorTypes'
 
 const MoreStack = createStackNavigator<MoreStackParamList>()
 
 const More = () => {
   return (
-    <MoreStack.Navigator
-      screenOptions={
-        Platform.OS === 'android' ? DefaultScreenOptions : undefined
-      }
-    >
+    <MoreStack.Navigator>
       <MoreStack.Screen name="MoreScreen" component={MoreScreen} />
       <MoreStack.Screen
         name="AccountCreatePinScreen"

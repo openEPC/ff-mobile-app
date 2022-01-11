@@ -3,16 +3,17 @@ import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 import Box from '../../../components/Box'
-import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from './hotspotSetupTypes'
+
 import BackScreen from '../../../components/BackScreen'
 import Text from '../../../components/Text'
 import { DebouncedButton } from '../../../components/Button'
 import HotspotConfigurationPicker from '../../../components/HotspotConfigurationPicker'
 import { Antenna, defaultAntenna } from '../../../types/Antenna'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import {
+  HotspotSetupNavigationProp,
+  HotspotSetupStackParamList,
+} from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<HotspotSetupStackParamList, 'AntennaSetupScreen'>
 

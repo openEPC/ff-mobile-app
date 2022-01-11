@@ -4,11 +4,11 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import {
   MoreNavigationProp,
   MoreStackParamList,
-} from 'src/features/moreTab/moreTypes'
-import Text from '../../../components/Text'
-import PinDisplay from '../../../components/PinDisplay'
-import Keypad from '../../../components/Keypad'
-import Box from '../../../components/Box'
+} from '../../navigation/moreNavigatorTypes'
+import Text from '../../components/Text'
+import PinDisplay from '../../components/PinDisplay'
+import Keypad from '../../components/Keypad'
+import Box from '../../components/Box'
 
 type Route = RouteProp<MoreStackParamList, 'AccountCreatePinScreen'>
 const AccountCreatePinScreen = () => {

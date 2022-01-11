@@ -11,15 +11,15 @@ import {
 import { ActivityIndicator, Linking } from 'react-native'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 import { hotspotOnChain } from '../../../utils/appDataClient'
 import useAlert from '../../../utils/useAlert'
-import { HotspotSetupStackParamList } from './hotspotSetupTypes'
 import { getSecureItem } from '../../../utils/secureAccount'
 import { useColors } from '../../../theme/themeHooks'
 import { DebouncedButton } from '../../../components/Button'
 import useMount from '../../../utils/useMount'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import { HotspotSetupStackParamList } from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<HotspotSetupStackParamList, 'HotspotTxnsProgressScreen'>
 

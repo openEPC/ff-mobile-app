@@ -11,10 +11,7 @@ import {
 } from '@helium/react-native-sdk'
 import type { Account } from '@helium/http'
 import { useAsync } from 'react-async-hook'
-import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from './hotspotSetupTypes'
+
 import BackScreen from '../../../components/BackScreen'
 import Box from '../../../components/Box'
 import ImageBox from '../../../components/ImageBox'
@@ -22,9 +19,14 @@ import { DebouncedButton } from '../../../components/Button'
 import Map from '../../../components/Map'
 import Text from '../../../components/Text'
 import { decimalSeparator, groupSeparator } from '../../../i18n'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
 import { getAddress } from '../../../utils/secureAccount'
 import { getAccount } from '../../../utils/appDataClient'
+
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import {
+  HotspotSetupNavigationProp,
+  HotspotSetupStackParamList,
+} from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<
   HotspotSetupStackParamList,

@@ -3,14 +3,14 @@ import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
+import Box from '../../../components/Box'
+import BackScreen from '../../../components/BackScreen'
+import useGetLocation from '../../../utils/useGetLocation'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
-} from './hotspotSetupTypes'
-import Box from '../../../components/Box'
-import BackScreen from '../../../components/BackScreen'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
-import useGetLocation from '../../../utils/useGetLocation'
+} from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<
   HotspotSetupStackParamList,

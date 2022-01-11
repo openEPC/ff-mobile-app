@@ -7,16 +7,17 @@ import { AddGateway, Onboarding } from '@helium/react-native-sdk'
 import BackScreen from '../../../components/BackScreen'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
-import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from './hotspotSetupTypes'
 import { useBreakpoints, useColors } from '../../../theme/themeHooks'
 import animateTransition from '../../../utils/animateTransition'
 import { DebouncedButton } from '../../../components/Button'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
 import { getAddress } from '../../../utils/secureAccount'
 import useMount from '../../../utils/useMount'
+
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import {
+  HotspotSetupNavigationProp,
+  HotspotSetupStackParamList,
+} from '../../../navigation/hotspotSetupNavigatorTypes'
 
 type Route = RouteProp<
   HotspotSetupStackParamList,

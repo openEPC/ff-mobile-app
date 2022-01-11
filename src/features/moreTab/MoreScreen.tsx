@@ -14,23 +14,26 @@ import { isEqual } from 'lodash'
 import { Edge } from 'react-native-safe-area-context'
 import { WalletLink } from '@helium/react-native-sdk'
 import { useAsync } from 'react-async-hook'
-import SafeAreaBox from '../../../components/SafeAreaBox'
-import Text from '../../../components/Text'
-import { RootState } from '../../../store/rootReducer'
-import { useAppDispatch } from '../../../store/store'
-import appSlice from '../../../store/user/appSlice'
-import { MoreNavigationProp, MoreStackParamList } from '../moreTypes'
+import SafeAreaBox from '../../components/SafeAreaBox'
+import Text from '../../components/Text'
+import { RootState } from '../../store/rootReducer'
+import { useAppDispatch } from '../../store/store'
+import appSlice from '../../store/user/appSlice'
+import {
+  MoreNavigationProp,
+  MoreStackParamList,
+} from '../../navigation/moreNavigatorTypes'
 import {
   RootNavigationProp,
   RootStackParamList,
-} from '../../../navigation/main/tabTypes'
+} from '../../navigation/navigationRootTypes'
 import MoreListItem, { MoreListItemType } from './MoreListItem'
 import useAuthIntervals from './useAuthIntervals'
-import { useSpacing } from '../../../theme/themeHooks'
-import Box from '../../../components/Box'
-import { SUPPORTED_LANGUAGUES } from '../../../i18n/i18nTypes'
-import { useLanguageContext } from '../../../providers/LanguageProvider'
-import { getSecureItem } from '../../../utils/secureAccount'
+import { useSpacing } from '../../theme/themeHooks'
+import Box from '../../components/Box'
+import { SUPPORTED_LANGUAGUES } from '../../i18n/i18nTypes'
+import { useLanguageContext } from '../../providers/LanguageProvider'
+import { getSecureItem } from '../../utils/secureAccount'
 
 type Route = RouteProp<RootStackParamList & MoreStackParamList, 'MoreScreen'>
 const MoreScreen = () => {

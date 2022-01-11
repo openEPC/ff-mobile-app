@@ -8,7 +8,7 @@ import { useAsync } from 'react-async-hook'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
-import { RootNavigationProp } from '../../../navigation/main/tabTypes'
+import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import { EXPLORER_BASE_URL } from '../../../utils/config'
 import { getAddress } from '../../../utils/secureAccount'
 
@@ -22,9 +22,11 @@ const HotspotsScreen = () => {
     setAccountB58(account?.b58 || '')
   }, [])
 
-  const goToSetup = useCallback(() => navigation.push('HotspotSetup'), [
-    navigation,
-  ])
+  const goToSetup = useCallback(
+    () =>
+      navigation.push('HotspotSetup', { screen: 'HotspotSetupExternalScreen' }),
+    [navigation],
+  )
 
   const openExplorer = useCallback(
     () => Linking.openURL(`${EXPLORER_BASE_URL}/accounts/${accountB58}`),

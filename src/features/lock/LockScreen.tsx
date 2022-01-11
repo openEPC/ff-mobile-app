@@ -8,10 +8,10 @@ import * as LocalAuthentication from 'expo-local-authentication'
 import {
   RootNavigationProp,
   RootStackParamList,
-} from '../../navigation/main/tabTypes'
+} from '../../navigation/navigationRootTypes'
 import { getSecureItem } from '../../utils/secureAccount'
 import ConfirmPinView from '../../components/ConfirmPinView'
-import { MoreNavigationProp } from '../moreTab/moreTypes'
+import { MoreNavigationProp } from '../../navigation/moreNavigatorTypes'
 import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
 import SafeAreaBox from '../../components/SafeAreaBox'
