@@ -1,16 +1,16 @@
 import React, { memo, useCallback, useState } from 'react'
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
 import AddIcon from '@assets/images/add.svg'
 import { Linking } from 'react-native'
 import { useAsync } from 'react-async-hook'
-import Box from '../../../components/Box'
+
 import Text from '../../../components/Text'
 import Button from '../../../components/Button'
 import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import { EXPLORER_BASE_URL } from '../../../utils/config'
 import { getAddress } from '../../../utils/secureAccount'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 
 const HotspotsScreen = () => {
   const { t } = useTranslation()
@@ -34,36 +34,26 @@ const HotspotsScreen = () => {
   )
 
   return (
-    <Box backgroundColor="primaryBackground" flex={1}>
-      <BottomSheetModalProvider>
-        <Box
-          padding="l"
-          flex={1}
-          justifyContent="center"
-          backgroundColor="primaryBackground"
-        >
-          <Text variant="h2">{t('hotspots.empty.title')}</Text>
-          <Text variant="body1" marginTop="ms">
-            {t('hotspots.empty.body')}
-          </Text>
-          <Button
-            onPress={goToSetup}
-            height={48}
-            marginTop="l"
-            mode="contained"
-            title={t('hotspots.empty.hotspots.add')}
-            Icon={AddIcon}
-          />
-          <Text variant="body1" marginTop="l">
-            {t('hotspots.view_activity')}
-            <Text variant="body1" color="primary" onPress={openExplorer}>
-              {t('hotspots.explorer')}
-            </Text>
-            {t('generic.period')}
-          </Text>
-        </Box>
-      </BottomSheetModalProvider>
-    </Box>
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
+      <Button
+        onPress={goToSetup}
+        marginTop="l"
+        mode="contained"
+        title={t('hotspotsScreen.addBtn')}
+        Icon={AddIcon}
+      />
+      <Text variant="body1" marginTop="l">
+        {t('hotspotsScreen.viewActivity')}
+        <Text variant="body1" color="primary" onPress={openExplorer}>
+          {t('hotspotsScreen.explorer')}
+        </Text>
+        {t('generic.period')}
+      </Text>
+    </SafeAreaBox>
   )
 }
 

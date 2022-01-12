@@ -1,36 +1,29 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import Config from 'react-native-config'
-import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import Icon from '@assets/images/placeholder.svg'
 import Toast from 'react-native-simple-toast'
-import { Linking, ScrollView } from 'react-native'
+import { Linking } from 'react-native'
 import Clipboard from '@react-native-community/clipboard'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import BackScreen from '../../../components/BackScreen'
+
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
-import { useColors, useBorderRadii } from '../../../theme/themeHooks'
+import { useColors } from '../../../theme/themeHooks'
 import { getAddress } from '../../../utils/secureAccount'
 import useHaptic from '../../../utils/useHaptic'
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import useMount from '../../../utils/useMount'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 
 const HotspotSetupExternalScreen = () => {
   const { t } = useTranslation()
   const colors = useColors()
-  const { xl } = useBorderRadii()
   const [address, setAddress] = useState<string>()
   const { triggerNotification } = useHaptic()
-  const navigation = useNavigation<RootNavigationProp>()
 
   useMount(() => {
     getAddress().then(setAddress)
   })
-
-  const handleClose = useCallback(() => navigation.navigate('MainTabs'), [
-    navigation,
-  ])
 
   const copyAddress = useCallback(() => {
     Clipboard.setString(address || '')
@@ -99,78 +92,72 @@ const HotspotSetupExternalScreen = () => {
     }
   }, [t])
 
-  const scrollViewStyle = useMemo(() => ({ borderRadius: xl }), [xl])
-
   return (
-    <BackScreen
+    <SafeAreaBox
+      flex={1}
       backgroundColor="primaryBackground"
-      paddingTop={{ smallPhone: 's', phone: 'lx' }}
-      onClose={handleClose}
+      paddingHorizontal="l"
     >
-      <ScrollView showsVerticalScrollIndicator={false} style={scrollViewStyle}>
-        <Box
-          height={52}
-          width={52}
-          backgroundColor="secondaryBackground"
-          borderRadius="m"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Icon color={colors.primary} width={24} height={24} />
-        </Box>
-        <Text
-          variant="h1"
-          numberOfLines={1}
-          lineHeight={{ smallPhone: 42, phone: 62 }}
-          fontSize={{ smallPhone: 28, phone: 40 }}
-          adjustsFontSizeToFit
-          marginTop="s"
-        >
-          {t('hotspot_setup.external.webTitle')}
+      <Box
+        height={52}
+        width={52}
+        backgroundColor="secondaryBackground"
+        borderRadius="m"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Icon color={colors.primary} width={24} height={24} />
+      </Box>
+      <Text
+        variant="h1"
+        numberOfLines={1}
+        lineHeight={{ smallPhone: 42, phone: 62 }}
+        fontSize={{ smallPhone: 28, phone: 40 }}
+        adjustsFontSizeToFit
+        marginTop="s"
+      >
+        {t('hotspot_setup.external.webTitle')}
+      </Text>
+      <Text
+        variant="subtitle1"
+        fontSize={{ smallPhone: 15, phone: 19 }}
+        lineHeight={{ smallPhone: 20, phone: 26 }}
+        maxFontSizeMultiplier={1}
+        marginTop={{ smallPhone: 's', phone: 'l' }}
+        marginBottom={linkToMaker ? undefined : { smallPhone: 's', phone: 'l' }}
+      >
+        {subtitle}
+      </Text>
+      {linkToMaker}
+      <Text
+        variant="subtitle1"
+        fontSize={{ smallPhone: 15, phone: 19 }}
+        lineHeight={{ smallPhone: 20, phone: 26 }}
+        maxFontSizeMultiplier={1}
+      >
+        {t('hotspot_setup.external.wallet_address')}
+      </Text>
+      <TouchableOpacity onPress={copyAddress}>
+        <Text variant="body1" maxFontSizeMultiplier={1}>
+          {address}
         </Text>
-        <Text
-          variant="subtitle1"
-          fontSize={{ smallPhone: 15, phone: 19 }}
-          lineHeight={{ smallPhone: 20, phone: 26 }}
-          maxFontSizeMultiplier={1}
-          marginTop={{ smallPhone: 's', phone: 'l' }}
-          marginBottom={
-            linkToMaker ? undefined : { smallPhone: 's', phone: 'l' }
-          }
-        >
-          {subtitle}
-        </Text>
-        {linkToMaker}
-        <Text
-          variant="subtitle1"
-          fontSize={{ smallPhone: 15, phone: 19 }}
-          lineHeight={{ smallPhone: 20, phone: 26 }}
-          maxFontSizeMultiplier={1}
-        >
-          {t('hotspot_setup.external.wallet_address')}
-        </Text>
-        <TouchableOpacity onPress={copyAddress}>
-          <Text variant="body1" maxFontSizeMultiplier={1}>
-            {address}
-          </Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
 
-        {additionalPhrases &&
-          additionalPhrases.map((phrase, idx) => (
-            <Text
-              // eslint-disable-next-line react/no-array-index-key
-              key={idx}
-              variant="subtitle1"
-              fontSize={{ smallPhone: 15, phone: 19 }}
-              lineHeight={{ smallPhone: 20, phone: 26 }}
-              marginTop={{ smallPhone: 's', phone: 'l' }}
-              maxFontSizeMultiplier={1}
-            >
-              {phrase}
-            </Text>
-          ))}
-      </ScrollView>
-    </BackScreen>
+      {additionalPhrases &&
+        additionalPhrases.map((phrase, idx) => (
+          <Text
+            // eslint-disable-next-line react/no-array-index-key
+            key={idx}
+            variant="subtitle1"
+            fontSize={{ smallPhone: 15, phone: 19 }}
+            lineHeight={{ smallPhone: 20, phone: 26 }}
+            marginTop={{ smallPhone: 's', phone: 'l' }}
+            maxFontSizeMultiplier={1}
+          >
+            {phrase}
+          </Text>
+        ))}
+    </SafeAreaBox>
   )
 }
 

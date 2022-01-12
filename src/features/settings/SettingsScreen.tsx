@@ -11,23 +11,17 @@ import { Alert, SectionList } from 'react-native'
 import { useSelector } from 'react-redux'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { isEqual } from 'lodash'
-import { Edge } from 'react-native-safe-area-context'
 import { WalletLink } from '@helium/react-native-sdk'
 import { useAsync } from 'react-async-hook'
+
 import SafeAreaBox from '../../components/SafeAreaBox'
 import Text from '../../components/Text'
 import { RootState } from '../../store/rootReducer'
 import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
-import {
-  MoreNavigationProp,
-  MoreStackParamList,
-} from '../../navigation/moreNavigatorTypes'
-import {
-  RootNavigationProp,
-  RootStackParamList,
-} from '../../navigation/navigationRootTypes'
-import MoreListItem, { MoreListItemType } from './MoreListItem'
+import { RootNavigationProp } from '../../navigation/navigationRootTypes'
+import { MainTabParamList } from '../../navigation/main/mainTabNavigatorTypes'
+import SettingListItem, { SettingListItemType } from './SettingListItem'
 import useAuthIntervals from './useAuthIntervals'
 import { useSpacing } from '../../theme/themeHooks'
 import Box from '../../components/Box'
@@ -35,14 +29,15 @@ import { SUPPORTED_LANGUAGUES } from '../../i18n/i18nTypes'
 import { useLanguageContext } from '../../providers/LanguageProvider'
 import { getSecureItem } from '../../utils/secureAccount'
 
-type Route = RouteProp<RootStackParamList & MoreStackParamList, 'MoreScreen'>
-const MoreScreen = () => {
+type Route = RouteProp<MainTabParamList, 'Settings'>
+
+const SettingsScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const dispatch = useAppDispatch()
   const app = useSelector((state: RootState) => state.app, isEqual)
   const authIntervals = useAuthIntervals()
-  const navigation = useNavigation<MoreNavigationProp & RootNavigationProp>()
+  const navigation = useNavigation<RootNavigationProp>()
   const spacing = useSpacing()
   const { changeLanguage, language } = useLanguageContext()
   const [address, setAddress] = useState('')
@@ -69,7 +64,7 @@ const MoreScreen = () => {
         dispatch(appSlice.actions.disablePin())
         break
       case 'resetPin':
-        navigation.push('AccountCreatePinScreen', { pinReset: true })
+        navigation.push('CreatePinScreen', { pinReset: true })
         break
     }
   }, [dispatch, params, navigation])
@@ -85,7 +80,7 @@ const MoreScreen = () => {
     (value?: boolean) => {
       if (!app.isPinRequired && value) {
         // toggling on
-        navigation.push('AccountCreatePinScreen', { pinReset: true })
+        navigation.push('CreatePinScreen', { pinReset: true })
       }
 
       if (app.isPinRequired && !value) {
@@ -129,7 +124,7 @@ const MoreScreen = () => {
   )
 
   const SectionData = useMemo(() => {
-    let pin: MoreListItemType[] = [
+    let pin: SettingListItemType[] = [
       {
         title: t('more.sections.security.enablePin'),
         onToggle: handlePinRequired,
@@ -176,7 +171,7 @@ const MoreScreen = () => {
             onPress: handleSignOut,
             destructive: true,
           },
-        ] as MoreListItemType[],
+        ] as SettingListItemType[],
       },
     ]
   }, [
@@ -203,7 +198,7 @@ const MoreScreen = () => {
 
   const renderItem = useCallback(
     ({ item, index, section }) => (
-      <MoreListItem
+      <SettingListItem
         item={item}
         isTop={index === 0}
         isBottom={index === section.data.length - 1}
@@ -238,12 +233,8 @@ const MoreScreen = () => {
 
   const keyExtractor = useCallback((item, index) => item.title + index, [])
 
-  const edges = useMemo(() => ['left', 'right', 'top'] as Edge[], [])
   return (
-    <SafeAreaBox backgroundColor="primaryBackground" flex={1} edges={edges}>
-      <Text variant="h3" marginVertical="m" paddingHorizontal="l">
-        {t('more.title')}
-      </Text>
+    <SafeAreaBox flex={1} backgroundColor="primaryBackground">
       <SectionList
         contentContainerStyle={contentContainer}
         sections={SectionData}
@@ -259,4 +250,4 @@ const MoreScreen = () => {
   )
 }
 
-export default memo(MoreScreen)
+export default memo(SettingsScreen)

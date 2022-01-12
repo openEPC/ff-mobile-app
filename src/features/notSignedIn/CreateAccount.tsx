@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { WalletLink } from '@helium/react-native-sdk'
 import { Linking, Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+
 import SafeAreaBox from '../../components/SafeAreaBox'
 import Text from '../../components/Text'
 import Box from '../../components/Box'
@@ -29,31 +30,28 @@ const CreateAccount = () => {
   )
 
   return (
-    <SafeAreaBox flex={1} backgroundColor="primaryBackground" padding="xl">
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
       <Text variant="subtitle1" marginBottom="l">
-        {t('account_setup.linkAccount.stepOne')}
+        {t('createAccountScreen.stepOne')}
       </Text>
 
       <Box flexDirection="row" marginBottom="l">
         {delegateApps.map((app) => (
-          <TouchableOpacityBox
-            key={app.name}
-            backgroundColor="surface"
-            padding="s"
-            paddingHorizontal="m"
-            borderRadius="l"
-            onPress={handleAppSelection(app)}
-          >
+          <TouchableOpacityBox key={app.name} onPress={handleAppSelection(app)}>
             <Text variant="h4">{app.name}</Text>
           </TouchableOpacityBox>
         ))}
       </Box>
 
       <Text variant="subtitle1" marginBottom="l">
-        {t('account_setup.linkAccount.stepTwo')}
+        {t('createAccountScreen.stepTwo')}
       </Text>
       <Text variant="subtitle1" marginBottom="l">
-        {t('account_setup.linkAccount.stepThree')}
+        {t('createAccountScreen.stepThree')}
       </Text>
     </SafeAreaBox>
   )

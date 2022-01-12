@@ -1,4 +1,42 @@
 export default {
+  generic: {
+    cancel: 'Cancel',
+    clear: 'Clear',
+    connect: 'Connect',
+    continue: 'Continue',
+    error: 'Error',
+    forget: 'Forget',
+    go_to_settings: 'Go to Settings',
+    invalid_password: 'You password is incorrect',
+    next: 'Next',
+    ok: 'OK',
+    scan_again: 'Scan Again',
+    search_location: 'Search for an address or place',
+    skip: '[skip button]',
+    something_went_wrong: 'Something went wrong',
+    understand: 'I understand',
+    unknown: 'Unknown',
+    period: '.',
+  },
+  welcomeScreen: {
+    title: 'Welcome',
+    signIn: 'Sign In',
+    createAccount: 'Create an account',
+  },
+  linkAccountScreen: {
+    signInWith: 'Sign in with:',
+  },
+  createAccountScreen: {
+    stepOne: '1. Download a supported Wallet App',
+    stepTwo: '2. Create account',
+    stepThree: '3. Come back to this app and sign in.',
+  },
+  hotspotsScreen: {
+    viewActivity: 'After adding a Hotspot, you can view your account on the ',
+    explorer: 'Helium Explorer',
+    addBtn: 'Add Hotspot',
+  },
+
   account_import: {
     alert: {
       body: "This seed phrase doesn't correspond to an account",
@@ -88,25 +126,7 @@ export default {
     title: 'Enter Your PIN',
   },
   back: 'Back',
-  generic: {
-    cancel: 'Cancel',
-    clear: 'Clear',
-    connect: 'Connect',
-    continue: 'Continue',
-    error: 'Error',
-    forget: 'Forget',
-    go_to_settings: 'Go to Settings',
-    invalid_password: 'You password is incorrect',
-    next: 'Next',
-    ok: 'OK',
-    scan_again: 'Scan Again',
-    search_location: 'Search for an address or place',
-    skip: '[skip button]',
-    something_went_wrong: 'Something went wrong',
-    understand: 'I understand',
-    unknown: 'Unknown',
-    period: '.',
-  },
+
   hotspot_details: {
     no_location_body: 'Pair with the Hotspot to begin.',
     no_location_title: 'No Asserted Location',

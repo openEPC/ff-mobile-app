@@ -11,7 +11,7 @@ import {
 } from '../../navigation/navigationRootTypes'
 import { getSecureItem } from '../../utils/secureAccount'
 import ConfirmPinView from '../../components/ConfirmPinView'
-import { MoreNavigationProp } from '../../navigation/moreNavigatorTypes'
+import { MainTabNavigationProp } from '../../navigation/main/mainTabNavigatorTypes'
 import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
 import SafeAreaBox from '../../components/SafeAreaBox'
@@ -24,7 +24,7 @@ const LockScreen = () => {
     params: { lock: shouldLock, requestType },
   } = useRoute<Route>()
   const rootNav = useNavigation<RootNavigationProp>()
-  const moreNav = useNavigation<MoreNavigationProp>()
+  const tabNav = useNavigation<MainTabNavigationProp>()
   const [locked, setLocked] = useStateWithCallbackLazy(shouldLock)
   const dispatch = useAppDispatch()
 
@@ -37,11 +37,11 @@ const LockScreen = () => {
         rootNav.goBack()
       })
     } else {
-      moreNav.navigate('MoreScreen', {
+      tabNav.navigate('Settings', {
         pinVerifiedFor: requestType,
       })
     }
-  }, [shouldLock, requestType, setLocked, dispatch, rootNav, moreNav])
+  }, [shouldLock, requestType, setLocked, dispatch, rootNav, tabNav])
 
   const handleSignOut = useCallback(() => {
     Alert.alert(

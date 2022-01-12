@@ -3,9 +3,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import HotspotsScreen from '../../features/hotspots/root/HotspotsScreen'
+import SettingsScreen from '../../features/settings/SettingsScreen'
 import { TabBarIconType, MainTabType } from './tabTypes'
 import TabBarIcon from './TabBarIcon'
-import More from '../MoreNavigator'
 import { RootState } from '../../store/rootReducer'
 import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
@@ -65,7 +65,7 @@ const MainTabs = () => {
       screenOptions={screenOptions}
     >
       <MainTab.Screen name="Hotspots" component={HotspotsScreen} />
-      <MainTab.Screen name="More" component={More} />
+      <MainTab.Screen name="Settings" component={SettingsScreen} />
     </MainTab.Navigator>
   )
 }

@@ -2,14 +2,13 @@ import React, { useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { KeyboardAvoidingView, StyleSheet } from 'react-native'
-import Box from '../../../components/Box'
 
-import BackScreen from '../../../components/BackScreen'
+import Box from '../../../components/Box'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 import Text from '../../../components/Text'
 import { DebouncedButton } from '../../../components/Button'
 import HotspotConfigurationPicker from '../../../components/HotspotConfigurationPicker'
 import { Antenna, defaultAntenna } from '../../../types/Antenna'
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
@@ -20,10 +19,7 @@ type Route = RouteProp<HotspotSetupStackParamList, 'AntennaSetupScreen'>
 const AntennaSetupScreen = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const rootNav = useNavigation<RootNavigationProp>()
   const { params } = useRoute<Route>()
-
-  const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
 
   const [antenna, setAntenna] = useState<Antenna>(defaultAntenna)
   const [gain, setGain] = useState<number>(defaultAntenna.gain)
@@ -40,7 +36,11 @@ const AntennaSetupScreen = () => {
   }, [antenna, elevation, gain, navigation, params])
 
   return (
-    <BackScreen onClose={handleClose}>
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
       <KeyboardAvoidingView
         style={styles.keyboardAvoidingView}
         behavior="padding"
@@ -78,7 +78,7 @@ const AntennaSetupScreen = () => {
         variant="primary"
         onPress={navNext}
       />
-    </BackScreen>
+    </SafeAreaBox>
   )
 }
 

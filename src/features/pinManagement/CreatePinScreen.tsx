@@ -1,34 +1,35 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import {
-  MoreNavigationProp,
-  MoreStackParamList,
-} from '../../navigation/moreNavigatorTypes'
+
 import Text from '../../components/Text'
 import PinDisplay from '../../components/PinDisplay'
 import Keypad from '../../components/Keypad'
 import Box from '../../components/Box'
+import {
+  RootStackParamList,
+  RootNavigationProp,
+} from '../../navigation/navigationRootTypes'
 
-type Route = RouteProp<MoreStackParamList, 'AccountCreatePinScreen'>
+type Route = RouteProp<RootStackParamList, 'CreatePinScreen'>
+
 const AccountCreatePinScreen = () => {
   const { t } = useTranslation()
   const {
-    params: { fromImport, pinReset } = { fromImport: false, pinReset: false },
+    params: { pinReset } = { fromImport: false, pinReset: false },
   } = useRoute<Route>()
-  const navigation = useNavigation<MoreNavigationProp>()
+  const navigation = useNavigation<RootNavigationProp>()
 
   const [pin, setPin] = useState('')
 
   useEffect(() => {
     if (pin.length === 6) {
-      navigation.push('AccountConfirmPinScreen', {
+      navigation.push('ConfirmPinScreen', {
         pin,
-        fromImport,
         pinReset,
       })
     }
-  }, [pin, fromImport, pinReset, navigation])
+  }, [pin, pinReset, navigation])
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('blur', () => {

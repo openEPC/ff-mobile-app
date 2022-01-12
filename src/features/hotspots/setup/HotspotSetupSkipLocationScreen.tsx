@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import BackScreen from '../../../components/BackScreen'
+
+import SafeAreaBox from '../../../components/SafeAreaBox'
 import Box from '../../../components/Box'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
@@ -19,18 +19,19 @@ type Route = RouteProp<
 const HotspotSetupSkipLocationScreen = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const rootNav = useNavigation<RootNavigationProp>()
 
   const { params } = useRoute<Route>()
-
-  const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
 
   const navNext = useCallback(async () => {
     navigation.replace('HotspotTxnsProgressScreen', params)
   }, [navigation, params])
 
   return (
-    <BackScreen onClose={handleClose}>
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
       <Box flex={1} justifyContent="center" paddingBottom="xxl">
         <Text variant="h1" marginBottom="l" maxFontSizeMultiplier={1}>
           {t('hotspot_setup.skip_location.title')}
@@ -60,7 +61,7 @@ const HotspotSetupSkipLocationScreen = () => {
           onPress={navNext}
         />
       </Box>
-    </BackScreen>
+    </SafeAreaBox>
   )
 }
 

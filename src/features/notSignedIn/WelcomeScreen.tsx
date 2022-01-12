@@ -1,12 +1,12 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
+
 import Text from '../../components/Text'
-import { RootNavigationProp } from '../../navigation/navigationRootTypes'
 import Box from '../../components/Box'
-import TextTransform from '../../components/TextTransform'
 import SafeAreaBox from '../../components/SafeAreaBox'
-import TouchableOpacityBox from '../../components/TouchableOpacityBox'
+import Button from '../../components/Button'
+import { RootNavigationProp } from '../../navigation/navigationRootTypes'
 
 const WelcomeScreen = () => {
   const { t } = useTranslation()
@@ -22,29 +22,31 @@ const WelcomeScreen = () => {
 
   return (
     <SafeAreaBox
-      backgroundColor="primaryBackground"
       flex={1}
+      backgroundColor="primaryBackground"
       paddingHorizontal="l"
       alignItems="center"
-      paddingTop="xxxl"
     >
-      <Text variant="h1">{t('account_setup.welcome.title')}</Text>
-      <TextTransform
-        variant="subtitle1"
-        marginVertical="xxl"
-        i18nKey="account_setup.welcome.subtitle"
-      />
+      <Text variant="h1">{t('welcomeScreen.title')}</Text>
+
       <Box flex={1} />
 
-      <TouchableOpacityBox onPress={createAccount} width="100%" padding="l">
-        <Text variant="body1">{t('account_setup.welcome.create_account')}</Text>
-      </TouchableOpacityBox>
-
-      <TouchableOpacityBox onPress={importAccount} width="100%" padding="l">
-        <Text variant="body1">
-          {t('account_setup.welcome.login_with_helium')}
-        </Text>
-      </TouchableOpacityBox>
+      <Button
+        onPress={importAccount}
+        mode="contained"
+        color="primary"
+        width="100%"
+        marginBottom="l"
+        title={t('welcomeScreen.signIn')}
+      />
+      <Button
+        mode="contained"
+        variant="secondary"
+        width="100%"
+        marginBottom="l"
+        onPress={createAccount}
+        title={t('welcomeScreen.createAccount')}
+      />
     </SafeAreaBox>
   )
 }

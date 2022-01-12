@@ -12,7 +12,7 @@ import {
 import type { Account } from '@helium/http'
 import { useAsync } from 'react-async-hook'
 
-import BackScreen from '../../../components/BackScreen'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 import Box from '../../../components/Box'
 import ImageBox from '../../../components/ImageBox'
 import { DebouncedButton } from '../../../components/Button'
@@ -21,8 +21,6 @@ import Text from '../../../components/Text'
 import { decimalSeparator, groupSeparator } from '../../../i18n'
 import { getAddress } from '../../../utils/secureAccount'
 import { getAccount } from '../../../utils/appDataClient'
-
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
@@ -36,7 +34,6 @@ type Route = RouteProp<
 const HotspotSetupConfirmLocationScreen = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const rootNav = useNavigation<RootNavigationProp>()
   const [account, setAccount] = useState<Account>()
   const [ownerAddress, setOwnerAddress] = useState<string | null>(null)
   const [feeData, setFeeData] = useState<{
@@ -80,22 +77,28 @@ const HotspotSetupConfirmLocationScreen = () => {
     navigation.replace('HotspotTxnsProgressScreen', params)
   }, [navigation, params])
 
-  const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
-
   if (!feeData) {
     return (
-      <BackScreen onClose={handleClose}>
+      <SafeAreaBox
+        flex={1}
+        backgroundColor="primaryBackground"
+        paddingHorizontal="l"
+      >
         <Box flex={1} justifyContent="center" paddingBottom="xxl">
           <ActivityIndicator color="#687A8C" />
         </Box>
-      </BackScreen>
+      </SafeAreaBox>
     )
   }
 
   const { isFree, hasSufficientBalance, totalStakingAmount } = feeData
 
   return (
-    <BackScreen onClose={handleClose}>
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
       <ScrollView>
         <Box flex={1} justifyContent="center" paddingBottom="xxl">
           <Text variant="h1" marginBottom="l" maxFontSizeMultiplier={1}>
@@ -242,7 +245,7 @@ const HotspotSetupConfirmLocationScreen = () => {
           disabled={isFree ? false : !hasSufficientBalance}
         />
       </Box>
-    </BackScreen>
+    </SafeAreaBox>
   )
 }
 

@@ -1,20 +1,18 @@
 import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native'
-import {
-  MoreNavigationProp,
-  MoreStackParamList,
-} from '../../navigation/moreNavigatorTypes'
 import appSlice from '../../store/user/appSlice'
 import { useAppDispatch } from '../../store/store'
 import ConfirmPinView from '../../components/ConfirmPinView'
+import { RootStackParamList } from '../../navigation/navigationRootTypes'
+import { MainTabNavigationProp } from '../../navigation/main/mainTabNavigatorTypes'
 
-type Route = RouteProp<MoreStackParamList, 'AccountConfirmPinScreen'>
+type Route = RouteProp<RootStackParamList, 'ConfirmPinScreen'>
 
-const AccountConfirmPinScreen = () => {
+const ConfirmPinScreen = () => {
   const dispatch = useAppDispatch()
   const route = useRoute<Route>()
-  const navigation = useNavigation<MoreNavigationProp>()
+  const navigation = useNavigation<MainTabNavigationProp>()
   const { pin: originalPin, pinReset } = route.params
   const { t } = useTranslation()
 
@@ -23,7 +21,7 @@ const AccountConfirmPinScreen = () => {
       dispatch(appSlice.actions.backupAccount(pin))
       if (pinReset) {
         // TODO: Handle pin reset complete
-        navigation.navigate('MoreScreen')
+        navigation.navigate('Settings')
       }
     },
     [pinReset, dispatch, navigation],
@@ -40,4 +38,4 @@ const AccountConfirmPinScreen = () => {
   )
 }
 
-export default AccountConfirmPinScreen
+export default ConfirmPinScreen

@@ -1,6 +1,9 @@
-import * as React from 'react'
+import React, { useCallback } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import { useTranslation } from 'react-i18next'
+import { useNavigation } from '@react-navigation/native'
 
+import Button from '../components/Button'
 import HotspotSetupLocationInfoScreen from '../features/hotspots/setup/HotspotSetupLocationInfoScreen'
 import HotspotSetupPickLocationScreen from '../features/hotspots/setup/HotspotSetupPickLocationScreen'
 import HotspotTxnsProgressScreen from '../features/hotspots/setup/HotspotTxnsProgressScreen'
@@ -11,12 +14,38 @@ import HotspotSetupExternalScreen from '../features/hotspots/setup/HotspotSetupE
 import HotspotSetupExternalConfirmScreen from '../features/hotspots/setup/HotspotSetupExternalConfirmScreen'
 import HotspotTxnsSubmitScreen from '../features/hotspots/setup/HotspotTxnsSubmitScreen'
 import { HotspotSetupStackParamList } from './hotspotSetupNavigatorTypes'
+import { RootNavigationProp } from './navigationRootTypes'
 
 const HotspotSetupStack = createStackNavigator<HotspotSetupStackParamList>()
 
 const HotspotSetup = () => {
+  const { t } = useTranslation()
+  const rootNavigation = useNavigation<RootNavigationProp>()
+
+  const handleCancel = useCallback(() => rootNavigation.navigate('MainTabs'), [
+    rootNavigation,
+  ])
+
   return (
-    <HotspotSetupStack.Navigator>
+    <HotspotSetupStack.Navigator
+      screenOptions={({ route }) => {
+        if (route.name === 'HotspotTxnsSubmitScreen') {
+          return { headerShown: false }
+        }
+
+        return {
+          title: '',
+          headerRight: () => (
+            <Button
+              onPress={handleCancel}
+              color="primary"
+              title={t('generic.cancel')}
+              height={26}
+            />
+          ),
+        }
+      }}
+    >
       <HotspotSetupStack.Screen
         name="HotspotSetupExternalScreen"
         component={HotspotSetupExternalScreen}

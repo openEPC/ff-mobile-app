@@ -11,24 +11,11 @@ import { useColors } from '../theme/themeHooks'
 import WelcomeScreen from '../features/notSignedIn/WelcomeScreen'
 import LinkAccount from '../features/notSignedIn/LinkAccount'
 import CreateAccount from '../features/notSignedIn/CreateAccount'
+import CreatePinScreen from '../features/pinManagement/CreatePinScreen'
+import ConfirmPinScreen from '../features/pinManagement/ConfirmPinScreen'
 import { RootStackParamList } from './navigationRootTypes'
 
 const Stack = createStackNavigator<RootStackParamList>()
-
-// NonAuth
-//  Welcome
-//  LinkAcc
-//  CreateAcc
-// Auth
-//  Lock
-//  Tabs
-//    Hotspots
-//    More
-//      Settings
-//      CreatePin
-//      ConfirmPin
-//  HotspotSetup
-//
 
 const NavigationRoot = () => {
   const { walletLinkToken } = useSelector((state: RootState) => state.app)
@@ -49,13 +36,16 @@ const NavigationRoot = () => {
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
         </Stack.Group>
       ) : (
-        <Stack.Group screenOptions={{ headerShown: false }}>
+        <Stack.Group
+          screenOptions={{ gestureEnabled: false, headerShown: false }}
+        >
           <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen
-            name="HotspotSetup"
-            component={HotspotSetup}
-            options={{ gestureEnabled: false }}
-          />
+
+          <Stack.Screen name="HotspotSetup" component={HotspotSetup} />
+
+          <Stack.Screen name="CreatePinScreen" component={CreatePinScreen} />
+          <Stack.Screen name="ConfirmPinScreen" component={ConfirmPinScreen} />
+
           <Stack.Screen name="LockScreen" component={LockScreen} />
         </Stack.Group>
       )}

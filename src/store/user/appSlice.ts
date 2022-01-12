@@ -5,7 +5,7 @@ import {
   setSecureItem,
   signOut,
 } from '../../utils/secureAccount'
-import { Intervals } from '../../features/moreTab/useAuthIntervals'
+import { Intervals } from '../../features/settings/useAuthIntervals'
 
 export type AppState = {
   isSettingUpHotspot: boolean

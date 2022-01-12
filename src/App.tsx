@@ -110,12 +110,14 @@ const App = () => {
               backgroundColor="transparent"
             />
           )}
+
           <NavigationContainer>
             <AppLinkProvider>
               <NavigationRoot />
             </AppLinkProvider>
           </NavigationContainer>
         </SafeAreaProvider>
+
         <SecurityScreen
           visible={appState !== 'active' && appState !== 'unknown'}
         />

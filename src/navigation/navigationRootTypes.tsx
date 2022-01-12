@@ -21,6 +21,12 @@ export type RootStackParamList = {
     lock?: boolean
   }
   HotspotSetup: NavigatorScreenParams<HotspotSetupStackParamList>
+
+  CreatePinScreen: { pinReset?: boolean } | undefined
+  ConfirmPinScreen: {
+    pin: string
+    pinReset?: boolean
+  }
 }
 
 export type RootNavigationProp = StackNavigationProp<RootStackParamList>

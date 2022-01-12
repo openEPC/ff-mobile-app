@@ -1,16 +1,15 @@
+import React from 'react'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
-import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
 import Box from '../../../components/Box'
-import BackScreen from '../../../components/BackScreen'
 import useGetLocation from '../../../utils/useGetLocation'
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
 } from '../../../navigation/hotspotSetupNavigatorTypes'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 
 type Route = RouteProp<
   HotspotSetupStackParamList,
@@ -21,10 +20,7 @@ const HotspotSetupLocationInfoScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const rootNav = useNavigation<RootNavigationProp>()
   const maybeGetLocation = useGetLocation()
-
-  const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
 
   const checkLocationPermissions = async () => {
     await maybeGetLocation(true)
@@ -36,14 +32,13 @@ const HotspotSetupLocationInfoScreen = () => {
   }
 
   return (
-    <BackScreen
-      onClose={handleClose}
+    <SafeAreaBox
+      flex={1}
       backgroundColor="primaryBackground"
-      padding="l"
+      paddingHorizontal="l"
     >
       <Text
         variant="h1"
-        marginVertical="l"
         maxFontSizeMultiplier={1}
         numberOfLines={2}
         adjustsFontSizeToFit
@@ -80,7 +75,7 @@ const HotspotSetupLocationInfoScreen = () => {
         mode="text"
         title={t('hotspot_setup.enable_location.cancel')}
       />
-    </BackScreen>
+    </SafeAreaBox>
   )
 }
 

@@ -129,8 +129,7 @@ const HotspotTxnsProgressScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      padding="lx"
-      paddingTop="xxl"
+      paddingHorizontal="l"
     >
       <Box flex={1} alignItems="center" paddingTop="xxl">
         <Text variant="subtitle1" marginBottom="l">

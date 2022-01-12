@@ -38,6 +38,7 @@ type Route = RouteProp<
   HotspotSetupStackParamList,
   'HotspotSetupPickLocationScreen'
 >
+
 const HotspotSetupPickLocationScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
@@ -105,11 +106,7 @@ const HotspotSetupPickLocationScreen = () => {
   const searchSnapPoints = useMemo(() => ['85%'], [])
 
   return (
-    <SafeAreaBox
-      flex={1}
-      edges={['bottom']}
-      backgroundColor="primaryBackground"
-    >
+    <SafeAreaBox flex={1} backgroundColor="primaryBackground">
       <TouchableOpacityBox
         onPress={handleSearchPress}
         position="absolute"

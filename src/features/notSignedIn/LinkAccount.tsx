@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { WalletLink } from '@helium/react-native-sdk'
 import { Linking, Platform } from 'react-native'
 import { getBundleId } from 'react-native-device-info'
+
 import SafeAreaBox from '../../components/SafeAreaBox'
 import Text from '../../components/Text'
 import Box from '../../components/Box'
@@ -32,9 +33,13 @@ const LinkAccount = () => {
   )
 
   return (
-    <SafeAreaBox flex={1} backgroundColor="primaryBackground" padding="xl">
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="l"
+    >
       <Text variant="subtitle1" marginBottom="l">
-        {t('account_setup.createAccount.signInWith')}
+        {t('linkAccountScreen.signInWith')}
       </Text>
 
       <Box flexDirection="row" marginBottom="l">
@@ -43,10 +48,6 @@ const LinkAccount = () => {
             key={
               Platform.OS === 'android' ? app.androidPackage : app.iosBundleId
             }
-            backgroundColor="surface"
-            padding="s"
-            paddingHorizontal="m"
-            borderRadius="l"
             onPress={handleAppSelection(app)}
           >
             <Text variant="h4">{app.name}</Text>

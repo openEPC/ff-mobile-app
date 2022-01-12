@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import Fingerprint from '@assets/images/fingerprint.svg'
 import { ActivityIndicator } from 'react-native'
 import { AddGateway, Onboarding } from '@helium/react-native-sdk'
-import BackScreen from '../../../components/BackScreen'
+
+import Fingerprint from '@assets/images/fingerprint.svg'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
 import { useBreakpoints, useColors } from '../../../theme/themeHooks'
@@ -12,8 +12,7 @@ import animateTransition from '../../../utils/animateTransition'
 import { DebouncedButton } from '../../../components/Button'
 import { getAddress } from '../../../utils/secureAccount'
 import useMount from '../../../utils/useMount'
-
-import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
+import SafeAreaBox from '../../../components/SafeAreaBox'
 import {
   HotspotSetupNavigationProp,
   HotspotSetupStackParamList,
@@ -28,7 +27,6 @@ const HotspotSetupExternalConfirmScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const colors = useColors()
   const breakpoints = useBreakpoints()
   const [address, setAddress] = useState<string>()
   const [publicKey, setPublicKey] = useState('')
@@ -38,9 +36,7 @@ const HotspotSetupExternalConfirmScreen = () => {
     onboardingRecord,
     setOnboardingRecord,
   ] = useState<Onboarding.OnboardingRecord>()
-  const rootNav = useNavigation<RootNavigationProp>()
-
-  const handleClose = useCallback(() => rootNav.navigate('MainTabs'), [rootNav])
+  const colors = useColors()
 
   useMount(() => {
     getAddress().then(setAddress)
@@ -77,10 +73,10 @@ const HotspotSetupExternalConfirmScreen = () => {
   }, [navigation, onboardingRecord, params, publicKey])
 
   return (
-    <BackScreen
+    <SafeAreaBox
+      flex={1}
       backgroundColor="primaryBackground"
-      paddingTop={{ smallPhone: 's', phone: 'lx' }}
-      onClose={handleClose}
+      paddingHorizontal="l"
     >
       <Box
         height={52}
@@ -97,7 +93,6 @@ const HotspotSetupExternalConfirmScreen = () => {
         fontSize={breakpoints.smallPhone ? 28 : 40}
         numberOfLines={breakpoints.smallPhone ? 1 : 2}
         adjustsFontSizeToFit
-        marginTop="l"
       >
         {breakpoints.smallPhone
           ? t('hotspot_setup.confirm.title_one_line')
@@ -173,7 +168,7 @@ const HotspotSetupExternalConfirmScreen = () => {
         onPress={navNext}
         disabled={ownerAddress !== address}
       />
-    </BackScreen>
+    </SafeAreaBox>
   )
 }
 
