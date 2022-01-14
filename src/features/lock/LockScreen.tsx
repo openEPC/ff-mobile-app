@@ -45,11 +45,11 @@ const LockScreen = () => {
 
   const handleSignOut = useCallback(() => {
     Alert.alert(
-      t('more.sections.app.signOutAlert.title'),
-      t('more.sections.app.signOutAlert.body'),
+      t('settingsScreen.sections.app.signOutAlert.title'),
+      t('settingsScreen.sections.app.signOutAlert.body'),
       [
         {
-          text: t('more.sections.app.signOut'),
+          text: t('settingsScreen.sections.app.signOut'),
           style: 'destructive',
           onPress: () => {
             dispatch(appSlice.actions.signOut())
@@ -94,7 +94,11 @@ const LockScreen = () => {
   }, [])
 
   return (
-    <SafeAreaBox backgroundColor="primaryBackground" flex={1}>
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="m"
+    >
       <ConfirmPinView
         originalPin={pin || ''}
         title={t('auth.title')}

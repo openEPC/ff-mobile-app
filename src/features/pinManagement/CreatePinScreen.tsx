@@ -10,6 +10,7 @@ import {
   RootStackParamList,
   RootNavigationProp,
 } from '../../navigation/navigationRootTypes'
+import SafeAreaBox from '../../components/SafeAreaBox'
 
 type Route = RouteProp<RootStackParamList, 'CreatePinScreen'>
 
@@ -48,10 +49,10 @@ const AccountCreatePinScreen = () => {
   }, [])
 
   return (
-    <Box
-      backgroundColor="primaryBackground"
+    <SafeAreaBox
       flex={1}
-      paddingHorizontal="lx"
+      backgroundColor="primaryBackground"
+      paddingHorizontal="m"
       justifyContent="center"
       alignItems="center"
     >
@@ -77,7 +78,7 @@ const AccountCreatePinScreen = () => {
         customButtonTitle={t('generic.cancel')}
       />
       <Box flex={1} />
-    </Box>
+    </SafeAreaBox>
   )
 }
 

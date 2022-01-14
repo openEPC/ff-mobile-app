@@ -60,7 +60,7 @@ const AddressSearchModal = ({ onSelectPlace }: Props) => {
       <TextInput
         onChangeText={handleSearchChange}
         padding="m"
-        placeholder={t('generic.search_location')}
+        placeholder={t('generic.searchLocation')}
         autoFocus
         autoCorrect={false}
         variant="secondary"

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import Text from '../../components/Text'
 import Box from '../../components/Box'
 import SafeAreaBox from '../../components/SafeAreaBox'
-import Button from '../../components/Button'
+import { Button } from '../../components/Button'
 import { RootNavigationProp } from '../../navigation/navigationRootTypes'
 
 const WelcomeScreen = () => {
@@ -24,7 +24,8 @@ const WelcomeScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
       alignItems="center"
     >
       <Text variant="h1">{t('welcomeScreen.title')}</Text>
@@ -33,17 +34,14 @@ const WelcomeScreen = () => {
 
       <Button
         onPress={importAccount}
-        mode="contained"
         color="primary"
-        width="100%"
-        marginBottom="l"
+        fullWidth
+        marginBottom="m"
         title={t('welcomeScreen.signIn')}
       />
       <Button
-        mode="contained"
-        variant="secondary"
-        width="100%"
-        marginBottom="l"
+        color="secondary"
+        fullWidth
         onPress={createAccount}
         title={t('welcomeScreen.createAccount')}
       />

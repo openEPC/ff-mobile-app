@@ -5,7 +5,7 @@ import changeNavigationBarColor from 'react-native-navigation-bar-color'
 
 import { RootState } from '../store/rootReducer'
 import LockScreen from '../features/lock/LockScreen'
-import HotspotSetup from './HotspotSetupNavigator'
+import GatewayOnboardingNavigator from './GatewayOnboardingNavigator'
 import MainTabs from './main/MainTabNavigator'
 import { useColors } from '../theme/themeHooks'
 import WelcomeScreen from '../features/notSignedIn/WelcomeScreen'
@@ -14,23 +14,31 @@ import CreateAccount from '../features/notSignedIn/CreateAccount'
 import CreatePinScreen from '../features/pinManagement/CreatePinScreen'
 import ConfirmPinScreen from '../features/pinManagement/ConfirmPinScreen'
 import { RootStackParamList } from './navigationRootTypes'
+import useDefaultScreenOptions from './useDefaultScreenOptions'
 
 const Stack = createStackNavigator<RootStackParamList>()
 
 const NavigationRoot = () => {
   const { walletLinkToken } = useSelector((state: RootState) => state.app)
   const colors = useColors()
+  const defaultScreenOptions = useDefaultScreenOptions()
 
   useEffect(() => {
-    changeNavigationBarColor(colors.primaryBackground, true, false)
-  }, [colors.primaryBackground])
+    changeNavigationBarColor(colors.primaryText, true, false)
+  }, [colors.primaryText])
 
   const notSignedIn = !walletLinkToken
 
   return (
     <Stack.Navigator>
       {notSignedIn ? (
-        <Stack.Group screenOptions={{ gestureEnabled: false, title: '' }}>
+        <Stack.Group
+          screenOptions={{
+            ...defaultScreenOptions,
+            gestureEnabled: false,
+            title: '',
+          }}
+        >
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
           <Stack.Screen name="LinkAccount" component={LinkAccount} />
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
@@ -41,7 +49,10 @@ const NavigationRoot = () => {
         >
           <Stack.Screen name="MainTabs" component={MainTabs} />
 
-          <Stack.Screen name="HotspotSetup" component={HotspotSetup} />
+          <Stack.Screen
+            name="GatewayOnboarding"
+            component={GatewayOnboardingNavigator}
+          />
 
           <Stack.Screen name="CreatePinScreen" component={CreatePinScreen} />
           <Stack.Screen name="ConfirmPinScreen" component={ConfirmPinScreen} />

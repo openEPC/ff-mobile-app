@@ -22,18 +22,18 @@ import { decimalSeparator, groupSeparator } from '../../../i18n'
 import { getAddress } from '../../../utils/secureAccount'
 import { getAccount } from '../../../utils/appDataClient'
 import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from '../../../navigation/hotspotSetupNavigatorTypes'
+  GatewayOnboardingNavigationProp,
+  GatewayOnboardingStackParamList,
+} from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
 type Route = RouteProp<
-  HotspotSetupStackParamList,
+  GatewayOnboardingStackParamList,
   'HotspotSetupConfirmLocationScreen'
 >
 
 const HotspotSetupConfirmLocationScreen = () => {
   const { t } = useTranslation()
-  const navigation = useNavigation<HotspotSetupNavigationProp>()
+  const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const [account, setAccount] = useState<Account>()
   const [ownerAddress, setOwnerAddress] = useState<string | null>(null)
   const [feeData, setFeeData] = useState<{
@@ -74,7 +74,7 @@ const HotspotSetupConfirmLocationScreen = () => {
   }, [onboardingRecord, ownerAddress, account])
 
   const navNext = useCallback(async () => {
-    navigation.replace('HotspotTxnsProgressScreen', params)
+    navigation.replace('TxnProgressScreen', params)
   }, [navigation, params])
 
   if (!feeData) {
@@ -82,7 +82,8 @@ const HotspotSetupConfirmLocationScreen = () => {
       <SafeAreaBox
         flex={1}
         backgroundColor="primaryBackground"
-        paddingHorizontal="l"
+        paddingHorizontal="m"
+        paddingBottom="m"
       >
         <Box flex={1} justifyContent="center" paddingBottom="xxl">
           <ActivityIndicator color="#687A8C" />
@@ -97,7 +98,8 @@ const HotspotSetupConfirmLocationScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
       <ScrollView>
         <Box flex={1} justifyContent="center" paddingBottom="xxl">
@@ -239,8 +241,7 @@ const HotspotSetupConfirmLocationScreen = () => {
               ? t('hotspot_setup.location_fee.next')
               : t('hotspot_setup.location_fee.fee_next')
           }
-          mode="contained"
-          variant="secondary"
+          color="secondary"
           onPress={navNext}
           disabled={isFree ? false : !hasSufficientBalance}
         />

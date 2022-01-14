@@ -24,9 +24,9 @@ const Icon = ({
   return <Cog color={color} height={size} width={size} />
 }
 
-const TabBarIcon = ({ name, focused, size }: Props) => {
-  const { black, bobcatRed } = useColors()
-  const color = focused ? bobcatRed : black
+const TabBarIcon = ({ name, /* focused, */ size }: Props) => {
+  const { primaryText } = useColors()
+  const color = primaryText // focused ? bobcatRed : black
 
   return (
     <Box

@@ -4,30 +4,24 @@ import { useTranslation } from 'react-i18next'
 import { ActivityIndicator } from 'react-native'
 import { AddGateway, Onboarding } from '@helium/react-native-sdk'
 
-import Fingerprint from '@assets/images/fingerprint.svg'
 import Box from '../../../components/Box'
 import Text from '../../../components/Text'
-import { useBreakpoints, useColors } from '../../../theme/themeHooks'
 import animateTransition from '../../../utils/animateTransition'
 import { DebouncedButton } from '../../../components/Button'
 import { getAddress } from '../../../utils/secureAccount'
 import useMount from '../../../utils/useMount'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from '../../../navigation/hotspotSetupNavigatorTypes'
+  GatewayOnboardingNavigationProp,
+  GatewayOnboardingStackParamList,
+} from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
-type Route = RouteProp<
-  HotspotSetupStackParamList,
-  'HotspotSetupExternalConfirmScreen'
->
+type Route = RouteProp<GatewayOnboardingStackParamList, 'TxnConfirmScreen'>
 
-const HotspotSetupExternalConfirmScreen = () => {
+const TxnConfirmScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
-  const navigation = useNavigation<HotspotSetupNavigationProp>()
-  const breakpoints = useBreakpoints()
+  const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const [address, setAddress] = useState<string>()
   const [publicKey, setPublicKey] = useState('')
   const [macAddress, setMacAddress] = useState('')
@@ -36,7 +30,6 @@ const HotspotSetupExternalConfirmScreen = () => {
     onboardingRecord,
     setOnboardingRecord,
   ] = useState<Onboarding.OnboardingRecord>()
-  const colors = useColors()
 
   useMount(() => {
     getAddress().then(setAddress)
@@ -47,7 +40,7 @@ const HotspotSetupExternalConfirmScreen = () => {
 
     const getRecord = async () => {
       const record = await Onboarding.getOnboardingRecord(publicKey)
-      animateTransition('HotspotSetupExternalConfirmScreen.GetMac')
+      animateTransition('TxnConfirmScreen.GetMac')
       setMacAddress(record.macEth0 || t('generic.unknown'))
       setOnboardingRecord(record)
     }
@@ -65,7 +58,7 @@ const HotspotSetupExternalConfirmScreen = () => {
 
   const navNext = useCallback(() => {
     if (!onboardingRecord) return
-    navigation.push('HotspotSetupLocationInfoScreen', {
+    navigation.push('AskSetLocationScreen', {
       addGatewayTxn: params.addGatewayTxn,
       hotspotAddress: publicKey,
       onboardingRecord,
@@ -76,61 +69,49 @@ const HotspotSetupExternalConfirmScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
-      <Box
-        height={52}
-        width={52}
-        backgroundColor="secondaryBackground"
-        borderRadius="m"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Fingerprint color={colors.primary} width={26} height={26} />
-      </Box>
       <Text
         variant="h1"
-        fontSize={breakpoints.smallPhone ? 28 : 40}
-        numberOfLines={breakpoints.smallPhone ? 1 : 2}
+        marginBottom="l"
+        numberOfLines={1}
         adjustsFontSizeToFit
       >
-        {breakpoints.smallPhone
-          ? t('hotspot_setup.confirm.title_one_line')
-          : t('hotspot_setup.confirm.title')}
+        {t('gatewayOnboarding.txnConfirmScreen.title')}
       </Text>
+
       <Box
-        padding="l"
         backgroundColor="secondaryBackground"
+        padding="m"
         borderTopLeftRadius="s"
         borderTopRightRadius="s"
-        marginTop={{ smallPhone: 'm', phone: 'xl' }}
         justifyContent="center"
       >
-        <Text variant="body1" maxFontSizeMultiplier={1}>
-          {t('hotspot_setup.confirm.public_key')}
+        <Text variant="body1">
+          {t('gatewayOnboarding.txnConfirmScreen.publicKey')}
         </Text>
         <Text
           variant="body1"
           marginTop="xs"
-          maxFontSizeMultiplier={1}
           numberOfLines={2}
           adjustsFontSizeToFit
         >
           {publicKey}
         </Text>
       </Box>
+
       <Box
-        padding="l"
         backgroundColor="secondaryBackground"
+        padding="m"
         marginTop="xs"
         justifyContent="center"
-        alignItems="flex-start"
       >
-        <Text variant="body1" maxFontSizeMultiplier={1}>
-          {t('hotspot_setup.confirm.mac_address')}
+        <Text variant="body1">
+          {t('gatewayOnboarding.txnConfirmScreen.macAddress')}
         </Text>
         {macAddress ? (
-          <Text variant="body1" marginTop="xs" maxFontSizeMultiplier={1}>
+          <Text variant="body1" marginTop="xs">
             {macAddress}
           </Text>
         ) : (
@@ -139,20 +120,20 @@ const HotspotSetupExternalConfirmScreen = () => {
           </Box>
         )}
       </Box>
+
       <Box
-        marginTop="xs"
         backgroundColor="secondaryBackground"
+        padding="m"
         borderBottomLeftRadius="s"
         borderBottomRightRadius="s"
-        padding="l"
+        marginTop="xs"
         justifyContent="center"
       >
-        <Text variant="body1" maxFontSizeMultiplier={1}>
-          {t('hotspot_setup.confirm.owner_address')}
+        <Text variant="body1">
+          {t('gatewayOnboarding.txnConfirmScreen.ownerAddress')}
         </Text>
         <Text
           variant="body1"
-          maxFontSizeMultiplier={1}
           marginTop="xs"
           numberOfLines={2}
           adjustsFontSizeToFit
@@ -160,11 +141,12 @@ const HotspotSetupExternalConfirmScreen = () => {
           {ownerAddress}
         </Text>
       </Box>
+
       <Box flex={1} />
+
       <DebouncedButton
         title={t('generic.next')}
-        mode="contained"
-        variant="primary"
+        color="primary"
         onPress={navNext}
         disabled={ownerAddress !== address}
       />
@@ -172,4 +154,4 @@ const HotspotSetupExternalConfirmScreen = () => {
   )
 }
 
-export default HotspotSetupExternalConfirmScreen
+export default TxnConfirmScreen

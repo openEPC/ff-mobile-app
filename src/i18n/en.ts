@@ -6,14 +6,14 @@ export default {
     continue: 'Continue',
     error: 'Error',
     forget: 'Forget',
-    go_to_settings: 'Go to Settings',
-    invalid_password: 'You password is incorrect',
+    goToSettings: 'Go to Settings',
+    invalidPassword: 'You password is incorrect',
     next: 'Next',
     ok: 'OK',
     scan_again: 'Scan Again',
-    search_location: 'Search for an address or place',
+    searchLocation: 'Search for an address or place',
     skip: '[skip button]',
-    something_went_wrong: 'Something went wrong',
+    somethingWentWrong: 'Something went wrong',
     understand: 'I understand',
     unknown: 'Unknown',
     period: '.',
@@ -31,10 +31,77 @@ export default {
     stepTwo: '2. Create account',
     stepThree: '3. Come back to this app and sign in.',
   },
-  hotspotsScreen: {
+  gatewaysScreen: {
     viewActivity: 'After adding a Hotspot, you can view your account on the ',
     explorer: 'Helium Explorer',
     addBtn: 'Add Hotspot',
+  },
+  settingsScreen: {
+    sections: {
+      app: {
+        language: 'Language',
+        signOut: 'Sign Out',
+        signOutWithLink: 'Sign Out - Linked as: {{address}}',
+        signOutAlert: {
+          body: 'You are signing out of your account.',
+          title: 'Warning!',
+        },
+        title: 'App',
+      },
+      security: {
+        authIntervals: {
+          after_15_min: 'After 15 minutes',
+          after_1_hr: 'After 1 hour',
+          after_1_min: 'After 1 minute',
+          after_4_hr: 'After 4 hours',
+          after_5_min: 'After 5 minutes',
+          immediately: 'Immediately',
+        },
+        enablePin: 'Enable PIN',
+        requirePin: 'Require PIN',
+        resetPin: 'Reset PIN',
+        title: 'Security',
+      },
+    },
+    title: 'Settings',
+  },
+  gatewayOnboarding: {
+    startScreen: {
+      title: 'Web Onboarding',
+      openLinkError: "Don't know how to open this URL: {{url}}",
+    },
+    txnConfirmScreen: {
+      title: 'Confirm Gateway Info',
+      publicKey: 'Public Key',
+      macAddress: 'MAC Address',
+      ownerAddress: 'Owner Address',
+    },
+    askSetLocationScreen: {
+      title: 'Set Gateway Location',
+      subtitle:
+        'We need to set a location for your Hotspot. We can use your phone to do this.',
+      p1: 'First, we’ll ask for permission to access your phone’s location.',
+      next: 'Ask for Permissions',
+      cancel: "No thanks, I'll set it up later",
+    },
+    skipLocationScreen: {
+      title: 'Add Hotspot',
+      subtitle1: 'You have decided to assert location later.',
+      subtitle2: 'Update your location later from settings.',
+      next: 'Register Hotspot',
+    },
+    txnProgressScreen: {
+      title: 'REGISTERING HOTSPOT',
+      waitErrorBody:
+        'Hotspot miner is waiting to start. Please try again in a few minutes.',
+      waitErrorTitle: 'Please Try Again',
+    },
+    txnSubmitedScreen: {
+      title: 'REGISTERING HOTSPOT',
+      subtitle:
+        'This can take a few minutes so feel free to close this screen.',
+      next: 'Go to Gateways List',
+    },
   },
 
   account_import: {
@@ -158,13 +225,7 @@ export default {
       hotspots_found_plural: '{{count}} Hotspots found',
       subtitle: 'Select your Hotspot to continue.',
     },
-    confirm: {
-      mac_address: 'MAC Address',
-      owner_address: 'Owner Address',
-      public_key: 'Public Key',
-      title: 'Confirm\nInformation',
-      title_one_line: 'Confirm Information',
-    },
+
     diagnostics: {
       title: 'Diagnostics',
     },
@@ -196,11 +257,6 @@ export default {
       subtitle:
         'We need to set a location for your Hotspot. We can use your phone to do this.',
       title: 'Set Hotspot\nLocation',
-    },
-    external: {
-      qrTitle: 'Scan QR Code',
-      wallet_address: 'Your wallet address is:',
-      webTitle: 'Web Onboarding',
     },
     firmware_update: {
       current_version: 'Current Version',
@@ -280,11 +336,7 @@ export default {
       subtitle: '[Placeholder instructions]',
       title: 'Add\nyour Hotspot.',
     },
-    skip_location: {
-      subtitle_1: 'You have decided to assert location later.',
-      subtitle_2: 'Update your location later from settings.',
-      title: 'Add Hotspot',
-    },
+
     wifi_password: {
       connecting: 'Connecting to Network',
       join_title: 'Enter Password',
@@ -323,35 +375,7 @@ export default {
   learn: {
     next: '[next button]',
   },
-  more: {
-    sections: {
-      app: {
-        language: 'Language',
-        signOut: 'Sign Out',
-        signOutWithLink: 'Sign Out - Linked as: {{address}}',
-        signOutAlert: {
-          body: 'You are signing out of your account.',
-          title: 'Warning!',
-        },
-        title: 'App',
-      },
-      security: {
-        authIntervals: {
-          after_15_min: 'After 15 minutes',
-          after_1_hr: 'After 1 hour',
-          after_1_min: 'After 1 minute',
-          after_4_hr: 'After 4 hours',
-          after_5_min: 'After 5 minutes',
-          immediately: 'Immediately',
-        },
-        enablePin: 'Enable PIN',
-        requirePin: 'Require PIN',
-        resetPin: 'Reset PIN',
-        title: 'Security',
-      },
-    },
-    title: 'Settings',
-  },
+
   ordinals: [
     '1st',
     '2nd',

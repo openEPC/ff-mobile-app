@@ -1,18 +1,17 @@
 import React, { memo, useCallback, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigation } from '@react-navigation/native'
-import AddIcon from '@assets/images/add.svg'
 import { Linking } from 'react-native'
 import { useAsync } from 'react-async-hook'
 
 import Text from '../../../components/Text'
-import Button from '../../../components/Button'
+import { Button } from '../../../components/Button'
 import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import { EXPLORER_BASE_URL } from '../../../utils/config'
 import { getAddress } from '../../../utils/secureAccount'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 
-const HotspotsScreen = () => {
+const GatewaysScreen = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<RootNavigationProp>()
   const [accountB58, setAccountB58] = useState('')
@@ -23,8 +22,7 @@ const HotspotsScreen = () => {
   }, [])
 
   const goToSetup = useCallback(
-    () =>
-      navigation.push('HotspotSetup', { screen: 'HotspotSetupExternalScreen' }),
+    () => navigation.push('GatewayOnboarding', { screen: 'StartScreen' }),
     [navigation],
   )
 
@@ -37,19 +35,18 @@ const HotspotsScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
       <Button
+        title={t('gatewaysScreen.addBtn')}
         onPress={goToSetup}
-        marginTop="l"
-        mode="contained"
-        title={t('hotspotsScreen.addBtn')}
-        Icon={AddIcon}
+        color="primary"
       />
       <Text variant="body1" marginTop="l">
-        {t('hotspotsScreen.viewActivity')}
+        {t('gatewaysScreen.viewActivity')}
         <Text variant="body1" color="primary" onPress={openExplorer}>
-          {t('hotspotsScreen.explorer')}
+          {t('gatewaysScreen.explorer')}
         </Text>
         {t('generic.period')}
       </Text>
@@ -57,4 +54,4 @@ const HotspotsScreen = () => {
   )
 }
 
-export default memo(HotspotsScreen)
+export default memo(GatewaysScreen)

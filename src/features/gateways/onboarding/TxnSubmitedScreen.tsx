@@ -8,11 +8,11 @@ import Text from '../../../components/Text'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 import { submitTxn } from '../../../utils/appDataClient'
 import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
-import { HotspotSetupStackParamList } from '../../../navigation/hotspotSetupNavigatorTypes'
+import { GatewayOnboardingStackParamList } from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
-type Route = RouteProp<HotspotSetupStackParamList, 'HotspotTxnsSubmitScreen'>
+type Route = RouteProp<GatewayOnboardingStackParamList, 'TxnSubmitedScreen'>
 
-const HotspotTxnsSubmitScreen = () => {
+const TxnSubmitedScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const navigation = useNavigation<RootNavigationProp>()
@@ -31,27 +31,27 @@ const HotspotTxnsSubmitScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
-      <Box flex={1} alignItems="center" paddingTop="xxl">
+      <Box flex={1} alignItems="center">
         <Text variant="subtitle1" marginBottom="l">
-          {t('hotspot_setup.progress.title')}
+          {t('gatewayOnboarding.txnSubmitedScreen.title')}
         </Text>
-        <Box paddingHorizontal="l">
-          <Text variant="body1" textAlign="center" marginBottom="l">
-            {t('hotspot_setup.progress.subtitle')}
-          </Text>
-        </Box>
+
+        <Text variant="body1" textAlign="center" marginBottom="l">
+          {t('gatewayOnboarding.txnSubmitedScreen.subtitle')}
+        </Text>
       </Box>
+
       <DebouncedButton
         onPress={() => navigation.navigate('MainTabs')}
-        variant="primary"
-        width="100%"
-        mode="contained"
-        title={t('hotspot_setup.progress.next')}
+        color="primary"
+        fullWidth
+        title={t('gatewayOnboarding.txnSubmitedScreen.next')}
       />
     </SafeAreaBox>
   )
 }
 
-export default HotspotTxnsSubmitScreen
+export default TxnSubmitedScreen

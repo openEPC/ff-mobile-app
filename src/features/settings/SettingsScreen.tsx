@@ -23,7 +23,6 @@ import { RootNavigationProp } from '../../navigation/navigationRootTypes'
 import { MainTabParamList } from '../../navigation/main/mainTabNavigatorTypes'
 import SettingListItem, { SettingListItemType } from './SettingListItem'
 import useAuthIntervals from './useAuthIntervals'
-import { useSpacing } from '../../theme/themeHooks'
 import Box from '../../components/Box'
 import { SUPPORTED_LANGUAGUES } from '../../i18n/i18nTypes'
 import { useLanguageContext } from '../../providers/LanguageProvider'
@@ -38,7 +37,6 @@ const SettingsScreen = () => {
   const app = useSelector((state: RootState) => state.app, isEqual)
   const authIntervals = useAuthIntervals()
   const navigation = useNavigation<RootNavigationProp>()
-  const spacing = useSpacing()
   const { changeLanguage, language } = useLanguageContext()
   const [address, setAddress] = useState('')
 
@@ -97,15 +95,15 @@ const SettingsScreen = () => {
 
   const handleSignOut = useCallback(() => {
     Alert.alert(
-      t('more.sections.app.signOutAlert.title'),
-      t('more.sections.app.signOutAlert.body'),
+      t('settingsScreen.sections.app.signOutAlert.title'),
+      t('settingsScreen.sections.app.signOutAlert.body'),
       [
         {
           text: t('generic.cancel'),
           style: 'cancel',
         },
         {
-          text: t('more.sections.app.signOut'),
+          text: t('settingsScreen.sections.app.signOut'),
           style: 'destructive',
           onPress: () => {
             dispatch(appSlice.actions.signOut())
@@ -126,7 +124,7 @@ const SettingsScreen = () => {
   const SectionData = useMemo(() => {
     let pin: SettingListItemType[] = [
       {
-        title: t('more.sections.security.enablePin'),
+        title: t('settingsScreen.sections.security.enablePin'),
         onToggle: handlePinRequired,
         value: app.isPinRequired,
       },
@@ -136,7 +134,7 @@ const SettingsScreen = () => {
       pin = [
         ...pin,
         {
-          title: t('more.sections.security.requirePin'),
+          title: t('settingsScreen.sections.security.requirePin'),
           value: app.authInterval || '',
           select: {
             items: authIntervals,
@@ -144,7 +142,7 @@ const SettingsScreen = () => {
           },
         },
         {
-          title: t('more.sections.security.resetPin'),
+          title: t('settingsScreen.sections.security.resetPin'),
           onPress: handleResetPin,
         },
       ]
@@ -152,14 +150,14 @@ const SettingsScreen = () => {
 
     return [
       {
-        title: t('more.sections.security.title'),
+        title: t('settingsScreen.sections.security.title'),
         data: pin,
       },
       {
-        title: t('more.sections.app.title'),
+        title: t('settingsScreen.sections.app.title'),
         data: [
           {
-            title: t('more.sections.app.language'),
+            title: t('settingsScreen.sections.app.language'),
             value: language,
             select: {
               items: SUPPORTED_LANGUAGUES,
@@ -167,7 +165,9 @@ const SettingsScreen = () => {
             },
           },
           {
-            title: t('more.sections.app.signOutWithLink', { address }),
+            title: t('settingsScreen.sections.app.signOutWithLink', {
+              address,
+            }),
             onPress: handleSignOut,
             destructive: true,
           },
@@ -187,14 +187,6 @@ const SettingsScreen = () => {
     handleIntervalSelected,
     handleResetPin,
   ])
-
-  const contentContainer = useMemo(
-    () => ({
-      paddingHorizontal: spacing.m,
-      paddingBottom: spacing.xxxl,
-    }),
-    [spacing.m, spacing.xxxl],
-  )
 
   const renderItem = useCallback(
     ({ item, index, section }) => (
@@ -234,9 +226,13 @@ const SettingsScreen = () => {
   const keyExtractor = useCallback((item, index) => item.title + index, [])
 
   return (
-    <SafeAreaBox flex={1} backgroundColor="primaryBackground">
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="m"
+      paddingBottom="m"
+    >
       <SectionList
-        contentContainerStyle={contentContainer}
         sections={SectionData}
         keyExtractor={keyExtractor}
         renderItem={renderItem}

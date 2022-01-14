@@ -11,12 +11,12 @@ import { useAsync } from 'react-async-hook'
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import * as SplashScreen from 'expo-splash-screen'
 import { NavigationContainer } from '@react-navigation/native'
+
 import { theme } from './theme/theme'
 import NavigationRoot from './navigation/NavigationRoot'
 import { useAppDispatch } from './store/store'
 import appSlice, { restoreAppSettings } from './store/user/appSlice'
 import { RootState } from './store/rootReducer'
-import SecurityScreen from './features/security/SecurityScreen'
 import AppLinkProvider from './providers/AppLinkProvider'
 import useMount from './utils/useMount'
 
@@ -117,10 +117,6 @@ const App = () => {
             </AppLinkProvider>
           </NavigationContainer>
         </SafeAreaProvider>
-
-        <SecurityScreen
-          visible={appState !== 'active' && appState !== 'unknown'}
-        />
       </BottomSheetModalProvider>
     </ThemeProvider>
   )

@@ -141,10 +141,10 @@ const HotspotConfigurationPicker = ({
     >
       <HeliumActionSheet
         title={t('antennas.onboarding.select')}
-        textProps={{ variant: 'body1', fontSize: 16, color: 'black' }}
+        textProps={{ variant: 'body1', fontSize: 16, color: 'boneBlack' }}
         initialValue={t('antennas.onboarding.select')}
         data={antennas}
-        iconColor="black"
+        iconColor="boneBlack"
         selectedValue={selectedAntenna?.name}
         onValueSelected={onSelectAntenna}
         buttonProps={{ justifyContent: 'space-between' }}
@@ -216,6 +216,6 @@ const HotspotConfigurationPicker = ({
   )
 }
 
-const styles = StyleSheet.create({ textInput: { color: 'black' } })
+const styles = StyleSheet.create({ textInput: { color: 'boneBlack' } })
 
 export default HotspotConfigurationPicker

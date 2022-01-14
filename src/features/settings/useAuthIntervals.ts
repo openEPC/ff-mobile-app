@@ -19,27 +19,27 @@ export default () => {
   const { t } = useTranslation()
   return [
     {
-      label: t('more.sections.security.authIntervals.immediately'),
+      label: t('settingsScreen.sections.security.authIntervals.immediately'),
       value: Intervals.IMMEDIATELY,
     },
     {
-      label: t('more.sections.security.authIntervals.after_1_min'),
+      label: t('settingsScreen.sections.security.authIntervals.after_1_min'),
       value: Intervals.ONE_MIN,
     },
     {
-      label: t('more.sections.security.authIntervals.after_5_min'),
+      label: t('settingsScreen.sections.security.authIntervals.after_5_min'),
       value: Intervals.FIVE_MIN,
     },
     {
-      label: t('more.sections.security.authIntervals.after_15_min'),
+      label: t('settingsScreen.sections.security.authIntervals.after_15_min'),
       value: Intervals.FIFTEEN_MIN,
     },
     {
-      label: t('more.sections.security.authIntervals.after_1_hr'),
+      label: t('settingsScreen.sections.security.authIntervals.after_1_hr'),
       value: Intervals.ONE_HOUR,
     },
     {
-      label: t('more.sections.security.authIntervals.after_4_hr'),
+      label: t('settingsScreen.sections.security.authIntervals.after_4_hr'),
       value: Intervals.FOUR_HOURS,
     },
   ] as HeliumActionSheetItemType[]

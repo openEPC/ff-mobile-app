@@ -6,20 +6,17 @@ import Text from '../../../components/Text'
 import Box from '../../../components/Box'
 import useGetLocation from '../../../utils/useGetLocation'
 import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from '../../../navigation/hotspotSetupNavigatorTypes'
+  GatewayOnboardingNavigationProp,
+  GatewayOnboardingStackParamList,
+} from '../../../navigation/gatewayOnboardingNavigatorTypes'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 
-type Route = RouteProp<
-  HotspotSetupStackParamList,
-  'HotspotSetupLocationInfoScreen'
->
+type Route = RouteProp<GatewayOnboardingStackParamList, 'AskSetLocationScreen'>
 
-const HotspotSetupLocationInfoScreen = () => {
+const AskSetLocationScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
-  const navigation = useNavigation<HotspotSetupNavigationProp>()
+  const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const maybeGetLocation = useGetLocation()
 
   const checkLocationPermissions = async () => {
@@ -28,55 +25,58 @@ const HotspotSetupLocationInfoScreen = () => {
   }
 
   const skipLocationAssert = () => {
-    navigation.navigate('HotspotSetupSkipLocationScreen', params)
+    navigation.navigate('SkipLocationScreen', params)
   }
 
   return (
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
       <Text
         variant="h1"
-        maxFontSizeMultiplier={1}
-        numberOfLines={2}
+        numberOfLines={1}
         adjustsFontSizeToFit
+        marginBottom="l"
       >
-        {t('hotspot_setup.enable_location.title')}
+        {t('gatewayOnboarding.askSetLocationScreen.title')}
       </Text>
+
       <Text
         variant="subtitle1"
         marginBottom="l"
-        maxFontSizeMultiplier={1.1}
         numberOfLines={3}
         adjustsFontSizeToFit
       >
-        {t('hotspot_setup.enable_location.subtitle')}
+        {t('gatewayOnboarding.askSetLocationScreen.subtitle')}
       </Text>
+
       <Text
         variant="body1"
         numberOfLines={2}
         adjustsFontSizeToFit
         maxFontSizeMultiplier={1.2}
       >
-        {t('hotspot_setup.enable_location.p_1')}
+        {t('gatewayOnboarding.askSetLocationScreen.p1')}
       </Text>
+
       <Box flex={1} />
+
       <DebouncedButton
         onPress={checkLocationPermissions}
-        variant="primary"
-        mode="contained"
-        title={t('hotspot_setup.enable_location.next')}
+        color="primary"
+        title={t('gatewayOnboarding.askSetLocationScreen.next')}
+        marginBottom="m"
       />
       <DebouncedButton
         onPress={skipLocationAssert}
-        variant="primary"
-        mode="text"
-        title={t('hotspot_setup.enable_location.cancel')}
+        color="secondary"
+        title={t('gatewayOnboarding.askSetLocationScreen.cancel')}
       />
     </SafeAreaBox>
   )
 }
 
-export default HotspotSetupLocationInfoScreen
+export default AskSetLocationScreen

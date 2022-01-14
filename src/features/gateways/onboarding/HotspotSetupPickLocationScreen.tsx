@@ -24,9 +24,9 @@ import Text from '../../../components/Text'
 import { reverseGeocode } from '../../../utils/location'
 import sleep from '../../../utils/sleep'
 import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from '../../../navigation/hotspotSetupNavigatorTypes'
+  GatewayOnboardingNavigationProp,
+  GatewayOnboardingStackParamList,
+} from '../../../navigation/gatewayOnboardingNavigatorTypes'
 import SafeAreaBox from '../../../components/SafeAreaBox'
 import TouchableOpacityBox from '../../../components/TouchableOpacityBox'
 import { useColors, useSpacing } from '../../../theme/themeHooks'
@@ -35,14 +35,14 @@ import AddressSearchModal from './AddressSearchModal'
 import { PlaceGeography } from '../../../utils/googlePlaces'
 
 type Route = RouteProp<
-  HotspotSetupStackParamList,
+  GatewayOnboardingStackParamList,
   'HotspotSetupPickLocationScreen'
 >
 
 const HotspotSetupPickLocationScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
-  const navigation = useNavigation<HotspotSetupNavigationProp>()
+  const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const [disabled, setDisabled] = useState(true)
   const [mapCenter, setMapCenter] = useState([-122.419, 37.775])
   const [markerCenter, setMarkerCenter] = useState([0, 0])
@@ -106,7 +106,12 @@ const HotspotSetupPickLocationScreen = () => {
   const searchSnapPoints = useMemo(() => ['85%'], [])
 
   return (
-    <SafeAreaBox flex={1} backgroundColor="primaryBackground">
+    <SafeAreaBox
+      flex={1}
+      backgroundColor="primaryBackground"
+      paddingHorizontal="m"
+      paddingBottom="m"
+    >
       <TouchableOpacityBox
         onPress={handleSearchPress}
         position="absolute"
@@ -158,8 +163,7 @@ const HotspotSetupPickLocationScreen = () => {
         </Box>
         <DebouncedButton
           onPress={navNext}
-          variant="primary"
-          mode="contained"
+          color="primary"
           disabled={disabled || !hasGPSLocation}
           title={t('hotspot_setup.location.next')}
         />

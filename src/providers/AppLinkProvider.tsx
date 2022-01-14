@@ -12,7 +12,7 @@ import queryString from 'query-string'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
-import { RootNavigationProp } from 'src/navigation/NavigationRoot'
+import { RootNavigationProp } from 'src/navigation/navigationRootTypes'
 import useMount from '../utils/useMount'
 import { RootState } from '../store/rootReducer'
 import {
@@ -76,8 +76,8 @@ const useAppLink = () => {
           const { resource: txnStr } = record as AppLink
           if (!txnStr) return
 
-          rootNavigation.navigate('HotspotSetup', {
-            screen: 'HotspotSetupExternalConfirmScreen',
+          rootNavigation.navigate('GatewayOnboarding', {
+            screen: 'TxnConfirmScreen',
             params: { addGatewayTxn: txnStr },
           })
           break
@@ -94,8 +94,8 @@ const useAppLink = () => {
         case 'sign_hotspot': {
           const hotspotLink = record as HotspotLink
           if (hotspotLink.status === 'success') {
-            rootNavigation.navigate('HotspotSetup', {
-              screen: 'HotspotTxnsSubmitScreen',
+            rootNavigation.navigate('GatewayOnboarding', {
+              screen: 'TxnSubmitedScreen',
               params: hotspotLink,
             })
           } else {

@@ -16,14 +16,13 @@ import { hotspotOnChain } from '../../../utils/appDataClient'
 import useAlert from '../../../utils/useAlert'
 import { getSecureItem } from '../../../utils/secureAccount'
 import { useColors } from '../../../theme/themeHooks'
-import { DebouncedButton } from '../../../components/Button'
 import useMount from '../../../utils/useMount'
 import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
-import { HotspotSetupStackParamList } from '../../../navigation/hotspotSetupNavigatorTypes'
+import { GatewayOnboardingStackParamList } from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
-type Route = RouteProp<HotspotSetupStackParamList, 'HotspotTxnsProgressScreen'>
+type Route = RouteProp<GatewayOnboardingStackParamList, 'TxnProgressScreen'>
 
-const HotspotTxnsProgressScreen = () => {
+const TxnProgressScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const navigation = useNavigation<RootNavigationProp>()
@@ -32,15 +31,13 @@ const HotspotTxnsProgressScreen = () => {
   const { primaryText } = useColors()
 
   const handleError = async (error: unknown) => {
-    // eslint-disable-next-line no-console
-    console.error(error)
     let titleKey = 'generic.error'
-    let messageKey = 'generice.something_went_wrong'
+    let messageKey = 'generice.somethingWentWrong'
 
     if (isString(error)) {
       if (error === HotspotErrorCode.WAIT) {
-        messageKey = t('hotspot_setup.add_hotspot.wait_error_body')
-        titleKey = t('hotspot_setup.add_hotspot.wait_error_title')
+        messageKey = t('gatewayOnboarding.txnProgressScreen.waitErrorBody')
+        titleKey = t('gatewayOnboarding.txnProgressScreen.waitErrorTitle')
       } else {
         messageKey = `Got error code ${error}`
       }
@@ -129,25 +126,19 @@ const HotspotTxnsProgressScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
-      <Box flex={1} alignItems="center" paddingTop="xxl">
+      <Box flex={1} alignItems="center">
         <Text variant="subtitle1" marginBottom="l">
-          {t('hotspot_setup.progress.title')}
+          {t('gatewayOnboarding.txnProgressScreen.title')}
         </Text>
         <Box flex={1} justifyContent="center">
           <ActivityIndicator color={primaryText} />
         </Box>
       </Box>
-      <DebouncedButton
-        onPress={() => navigation.navigate('MainTabs')}
-        variant="primary"
-        width="100%"
-        mode="contained"
-        title={t('generic.cancel')}
-      />
     </SafeAreaBox>
   )
 }
 
-export default HotspotTxnsProgressScreen
+export default TxnProgressScreen

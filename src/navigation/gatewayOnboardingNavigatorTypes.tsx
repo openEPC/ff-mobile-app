@@ -1,12 +1,12 @@
 import { Onboarding } from '@helium/react-native-sdk'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-export type HotspotSetupStackParamList = {
-  HotspotSetupExternalScreen: undefined
-  HotspotSetupExternalConfirmScreen: {
+export type GatewayOnboardingStackParamList = {
+  StartScreen: undefined
+  TxnConfirmScreen: {
     addGatewayTxn: string
   }
-  HotspotSetupLocationInfoScreen: {
+  AskSetLocationScreen: {
     addGatewayTxn?: string
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord
@@ -32,14 +32,14 @@ export type HotspotSetupStackParamList = {
     coords?: number[]
     locationName?: string
   }
-  HotspotSetupSkipLocationScreen: {
+  SkipLocationScreen: {
     addGatewayTxn?: string
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord
     elevation?: number
     gain?: number
   }
-  HotspotTxnsProgressScreen: {
+  TxnProgressScreen: {
     addGatewayTxn?: string
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord
@@ -48,10 +48,10 @@ export type HotspotSetupStackParamList = {
     coords?: number[]
     locationName?: string
   }
-  HotspotTxnsSubmitScreen: {
+  TxnSubmitedScreen: {
     assertTxn?: string
     gatewayTxn?: string
   }
 }
 
-export type HotspotSetupNavigationProp = StackNavigationProp<HotspotSetupStackParamList>
+export type GatewayOnboardingNavigationProp = StackNavigationProp<GatewayOnboardingStackParamList>

@@ -2,7 +2,7 @@ import React, { useEffect, memo, useMemo, useCallback } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import HotspotsScreen from '../../features/hotspots/root/HotspotsScreen'
+import GatewaysScreen from '../../features/gateways/root/GatewaysScreen'
 import SettingsScreen from '../../features/settings/SettingsScreen'
 import { TabBarIconType, MainTabType } from './tabTypes'
 import TabBarIcon from './TabBarIcon'
@@ -11,6 +11,8 @@ import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
 import { RootNavigationProp } from '../navigationRootTypes'
 import { MainTabParamList } from './mainTabNavigatorTypes'
+import useDefaultScreenOptions from '../useDefaultScreenOptions'
+import { useColors } from '../../theme/themeHooks'
 
 const MainTab = createBottomTabNavigator<MainTabParamList>()
 
@@ -21,6 +23,9 @@ const MainTabs = () => {
   } = useSelector((state: RootState) => state)
   const dispatch = useAppDispatch()
 
+  const { primaryBackground } = useColors()
+  const defaultScreenOptions = useDefaultScreenOptions()
+
   useEffect(() => {
     if (!isLocked) return
     rootNavigation.navigate('LockScreen', { requestType: 'unlock', lock: true })
@@ -30,8 +35,8 @@ const MainTabs = () => {
     if (!isSettingUpHotspot) return
 
     dispatch(appSlice.actions.startHotspotSetup())
-    rootNavigation.navigate('HotspotSetup', {
-      screen: 'HotspotSetupExternalScreen',
+    rootNavigation.navigate('GatewayOnboarding', {
+      screen: 'StartScreen',
     })
   }, [isSettingUpHotspot, dispatch, rootNavigation])
 
@@ -44,6 +49,10 @@ const MainTabs = () => {
 
   const screenOptions = useCallback(
     ({ route }) => ({
+      ...defaultScreenOptions,
+      tabBarStyle: {
+        backgroundColor: primaryBackground,
+      },
       tabBarIcon: ({ focused, color, size }: TabBarIconType) => {
         return (
           <TabBarIcon
@@ -55,7 +64,7 @@ const MainTabs = () => {
         )
       },
     }),
-    [],
+    [defaultScreenOptions, primaryBackground],
   )
 
   return (
@@ -64,7 +73,7 @@ const MainTabs = () => {
       initialRouteName="Hotspots"
       screenOptions={screenOptions}
     >
-      <MainTab.Screen name="Hotspots" component={HotspotsScreen} />
+      <MainTab.Screen name="Hotspots" component={GatewaysScreen} />
       <MainTab.Screen name="Settings" component={SettingsScreen} />
     </MainTab.Navigator>
   )

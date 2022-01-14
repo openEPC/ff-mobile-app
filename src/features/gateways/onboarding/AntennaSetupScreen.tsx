@@ -10,15 +10,15 @@ import { DebouncedButton } from '../../../components/Button'
 import HotspotConfigurationPicker from '../../../components/HotspotConfigurationPicker'
 import { Antenna, defaultAntenna } from '../../../types/Antenna'
 import {
-  HotspotSetupNavigationProp,
-  HotspotSetupStackParamList,
-} from '../../../navigation/hotspotSetupNavigatorTypes'
+  GatewayOnboardingNavigationProp,
+  GatewayOnboardingStackParamList,
+} from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
-type Route = RouteProp<HotspotSetupStackParamList, 'AntennaSetupScreen'>
+type Route = RouteProp<GatewayOnboardingStackParamList, 'AntennaSetupScreen'>
 
 const AntennaSetupScreen = () => {
   const { t } = useTranslation()
-  const navigation = useNavigation<HotspotSetupNavigationProp>()
+  const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const { params } = useRoute<Route>()
 
   const [antenna, setAntenna] = useState<Antenna>(defaultAntenna)
@@ -39,7 +39,8 @@ const AntennaSetupScreen = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
       <KeyboardAvoidingView
         style={styles.keyboardAvoidingView}
@@ -74,9 +75,8 @@ const AntennaSetupScreen = () => {
       </KeyboardAvoidingView>
       <DebouncedButton
         title={t('generic.next')}
-        mode="contained"
-        variant="primary"
         onPress={navNext}
+        color="primary"
       />
     </SafeAreaBox>
   )

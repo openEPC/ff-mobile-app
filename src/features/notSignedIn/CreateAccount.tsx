@@ -33,7 +33,8 @@ const CreateAccount = () => {
     <SafeAreaBox
       flex={1}
       backgroundColor="primaryBackground"
-      paddingHorizontal="l"
+      paddingHorizontal="m"
+      paddingBottom="m"
     >
       <Text variant="subtitle1" marginBottom="l">
         {t('createAccountScreen.stepOne')}
