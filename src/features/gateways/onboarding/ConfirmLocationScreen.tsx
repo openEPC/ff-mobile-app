@@ -26,12 +26,9 @@ import {
   GatewayOnboardingStackParamList,
 } from '../../../navigation/gatewayOnboardingNavigatorTypes'
 
-type Route = RouteProp<
-  GatewayOnboardingStackParamList,
-  'HotspotSetupConfirmLocationScreen'
->
+type Route = RouteProp<GatewayOnboardingStackParamList, 'ConfirmLocationScreen'>
 
-const HotspotSetupConfirmLocationScreen = () => {
+const ConfirmLocationScreen = () => {
   const { t } = useTranslation()
   const navigation = useNavigation<GatewayOnboardingNavigationProp>()
   const [account, setAccount] = useState<Account>()
@@ -102,31 +99,24 @@ const HotspotSetupConfirmLocationScreen = () => {
       paddingBottom="m"
     >
       <ScrollView>
-        <Box flex={1} justifyContent="center" paddingBottom="xxl">
-          <Text variant="h1" marginBottom="l" maxFontSizeMultiplier={1}>
+        <Box flex={1} paddingBottom="m">
+          <Text variant="h1" marginBottom="s">
             {t('hotspot_setup.location_fee.title')}
           </Text>
           {isFree ? (
-            <Text
-              variant="subtitle1"
-              marginBottom={{ phone: 'l', smallPhone: 'ms' }}
-            >
+            <Text variant="subtitle1" marginBottom="s">
               {t('hotspot_setup.location_fee.subtitle_free')}
             </Text>
           ) : (
-            <Text
-              variant="subtitle1"
-              marginBottom={{ phone: 'l', smallPhone: 'ms' }}
-            >
+            <Text variant="subtitle1" marginBottom="s">
               {t('hotspot_setup.location_fee.subtitle_fee')}
             </Text>
           )}
           <Text
             variant="subtitle1"
-            marginBottom={{ phone: 'xl', smallPhone: 'ms' }}
+            marginBottom="s"
             numberOfLines={2}
             adjustsFontSizeToFit
-            maxFontSizeMultiplier={1.3}
           >
             {t('hotspot_setup.location_fee.confirm_location')}
           </Text>
@@ -134,7 +124,7 @@ const HotspotSetupConfirmLocationScreen = () => {
             height={{ smallPhone: 140, phone: 200 }}
             borderRadius="l"
             overflow="hidden"
-            marginBottom={{ phone: 'm', smallPhone: 'ms' }}
+            marginBottom="s"
           >
             <Box flex={1}>
               <Map mapCenter={coords} zoomLevel={16} interactive={false} />
@@ -155,18 +145,14 @@ const HotspotSetupConfirmLocationScreen = () => {
                 />
               </Box>
             </Box>
-            <Box padding="m" backgroundColor="secondaryBackground">
+            <Box padding="s" backgroundColor="secondaryBackground">
               <Text variant="body2" numberOfLines={1} adjustsFontSizeToFit>
                 {params.locationName}
               </Text>
             </Box>
           </Box>
 
-          <Box
-            flexDirection="row"
-            justifyContent="space-between"
-            marginTop={{ phone: 'm', smallPhone: 'xxs' }}
-          >
+          <Box flexDirection="row" justifyContent="space-between" marginTop="s">
             <Text variant="body1" color="secondaryText">
               {t('hotspot_setup.location_fee.gain_label')}
             </Text>
@@ -175,11 +161,7 @@ const HotspotSetupConfirmLocationScreen = () => {
             </Text>
           </Box>
 
-          <Box
-            flexDirection="row"
-            justifyContent="space-between"
-            marginTop={{ phone: 'm', smallPhone: 'xxs' }}
-          >
+          <Box flexDirection="row" justifyContent="space-between" marginTop="s">
             <Text variant="body1" color="secondaryText">
               {t('hotspot_setup.location_fee.elevation_label')}
             </Text>
@@ -193,8 +175,8 @@ const HotspotSetupConfirmLocationScreen = () => {
               <Box
                 flexDirection="row"
                 justifyContent="space-between"
-                paddingTop="m"
-                marginTop={{ phone: 'm', smallPhone: 'xxs' }}
+                paddingTop="s"
+                marginTop="s"
               >
                 <Text variant="body1" color="secondaryText">
                   {t('hotspot_setup.location_fee.balance')}
@@ -213,7 +195,7 @@ const HotspotSetupConfirmLocationScreen = () => {
               <Box
                 flexDirection="row"
                 justifyContent="space-between"
-                marginTop={{ phone: 'm', smallPhone: 'xxs' }}
+                marginTop="s"
               >
                 <Text variant="body1" color="secondaryText">
                   {t('hotspot_setup.location_fee.fee')}
@@ -224,7 +206,7 @@ const HotspotSetupConfirmLocationScreen = () => {
               </Box>
 
               {!hasSufficientBalance && (
-                <Box marginTop={{ phone: 'l', smallPhone: 'xxs' }}>
+                <Box marginTop="s">
                   <Text variant="body2" color="error" textAlign="center">
                     {t('hotspot_setup.location_fee.no_funds')}
                   </Text>
@@ -241,7 +223,7 @@ const HotspotSetupConfirmLocationScreen = () => {
               ? t('hotspot_setup.location_fee.next')
               : t('hotspot_setup.location_fee.fee_next')
           }
-          color="secondary"
+          color="primary"
           onPress={navNext}
           disabled={isFree ? false : !hasSufficientBalance}
         />
@@ -250,4 +232,4 @@ const HotspotSetupConfirmLocationScreen = () => {
   )
 }
 
-export default HotspotSetupConfirmLocationScreen
+export default ConfirmLocationScreen

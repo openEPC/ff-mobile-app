@@ -34,12 +34,9 @@ import BSHandle from '../../../components/BSHandle'
 import AddressSearchModal from './AddressSearchModal'
 import { PlaceGeography } from '../../../utils/googlePlaces'
 
-type Route = RouteProp<
-  GatewayOnboardingStackParamList,
-  'HotspotSetupPickLocationScreen'
->
+type Route = RouteProp<GatewayOnboardingStackParamList, 'PickLocationScreen'>
 
-const HotspotSetupPickLocationScreen = () => {
+const PickLocationScreen = () => {
   const { t } = useTranslation()
   const { params } = useRoute<Route>()
   const navigation = useNavigation<GatewayOnboardingNavigationProp>()
@@ -156,7 +153,7 @@ const HotspotSetupPickLocationScreen = () => {
         >
           <Box>
             <Text variant="body1" marginBottom="xs">
-              {t('hotspot_setup.location.title')}
+              {t('gatewayOnboarding.pickLocationScreen.title')}
             </Text>
             <Text variant="body1">{locationName}</Text>
           </Box>
@@ -165,9 +162,10 @@ const HotspotSetupPickLocationScreen = () => {
           onPress={navNext}
           color="primary"
           disabled={disabled || !hasGPSLocation}
-          title={t('hotspot_setup.location.next')}
+          title={t('gatewayOnboarding.pickLocationScreen.next')}
         />
       </Box>
+
       <BottomSheetModalProvider>
         <BottomSheetModal
           ref={searchModal}
@@ -183,4 +181,4 @@ const HotspotSetupPickLocationScreen = () => {
   )
 }
 
-export default memo(HotspotSetupPickLocationScreen)
+export default memo(PickLocationScreen)

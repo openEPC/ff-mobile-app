@@ -10,9 +10,9 @@ import { Button } from '../components/Button'
 import { RootNavigationProp } from './navigationRootTypes'
 import useDefaultScreenOptions from './useDefaultScreenOptions'
 import AskSetLocationScreen from '../features/gateways/onboarding/AskSetLocationScreen'
-import HotspotSetupPickLocationScreen from '../features/gateways/onboarding/HotspotSetupPickLocationScreen'
+import PickLocationScreen from '../features/gateways/onboarding/PickLocationScreen'
 import TxnProgressScreen from '../features/gateways/onboarding/TxnProgressScreen'
-import HotspotSetupConfirmLocationScreen from '../features/gateways/onboarding/HotspotSetupConfirmLocationScreen'
+import ConfirmLocationScreen from '../features/gateways/onboarding/ConfirmLocationScreen'
 import SkipLocationScreen from '../features/gateways/onboarding/SkipLocationScreen'
 import AntennaSetupScreen from '../features/gateways/onboarding/AntennaSetupScreen'
 import StartScreen from '../features/gateways/onboarding/StartScreen'
@@ -69,13 +69,10 @@ const GatewayOnboardingNavigator = () => {
         name="AskSetLocationScreen"
         component={AskSetLocationScreen}
       />
+      <Stack.Screen name="PickLocationScreen" component={PickLocationScreen} />
       <Stack.Screen
-        name="HotspotSetupPickLocationScreen"
-        component={HotspotSetupPickLocationScreen}
-      />
-      <Stack.Screen
-        name="HotspotSetupConfirmLocationScreen"
-        component={HotspotSetupConfirmLocationScreen}
+        name="ConfirmLocationScreen"
+        component={ConfirmLocationScreen}
       />
       <Stack.Screen name="AntennaSetupScreen" component={AntennaSetupScreen} />
       <Stack.Screen name="SkipLocationScreen" component={SkipLocationScreen} />

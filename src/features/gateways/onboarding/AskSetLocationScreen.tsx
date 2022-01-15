@@ -21,7 +21,7 @@ const AskSetLocationScreen = () => {
 
   const checkLocationPermissions = async () => {
     await maybeGetLocation(true)
-    navigation.navigate('HotspotSetupPickLocationScreen', params)
+    navigation.navigate('PickLocationScreen', params)
   }
 
   const skipLocationAssert = () => {

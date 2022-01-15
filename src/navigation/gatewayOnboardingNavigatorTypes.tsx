@@ -11,12 +11,12 @@ export type GatewayOnboardingStackParamList = {
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord
   }
-  HotspotSetupPickLocationScreen: {
+  PickLocationScreen: {
     addGatewayTxn?: string
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord
   }
-  HotspotSetupConfirmLocationScreen: {
+  ConfirmLocationScreen: {
     addGatewayTxn?: string
     hotspotAddress: string
     onboardingRecord: Onboarding.OnboardingRecord

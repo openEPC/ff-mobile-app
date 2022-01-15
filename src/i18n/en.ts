@@ -102,6 +102,30 @@ export default {
         'This can take a few minutes so feel free to close this screen.',
       next: 'Go to Gateways List',
     },
+    pickLocationScreen: {
+      title: 'Hotspot Location',
+      next: 'Set Location',
+    },
+  },
+  antennas: {
+    elevation_info: {
+      desc:
+        'Estimate how high the antenna is placed relative to the ground. An antenna located on the roof of a single-story house is typically 5 meters.',
+      title: 'Hotspot Height',
+    },
+    gain_info: {
+      desc:
+        'A value between 1 and 15 to one decimal point. This is provided by your hotspot or antenna manufacturer.',
+      title: 'Antenna TX / RX Gain',
+    },
+    onboarding: {
+      dbi: 'dBi',
+      elevation: 'Height (meters)',
+      gain: 'TX / RX Gain',
+      select: 'Select Antenna',
+      subtitle: 'Submit antenna and height details for your Gateway.',
+      title: 'Antenna Setup',
+    },
   },
 
   account_import: {
@@ -168,26 +192,7 @@ export default {
       signInWith: 'Sign in with:',
     },
   },
-  antennas: {
-    elevation_info: {
-      desc:
-        'Estimate how high the antenna is placed relative to the ground. An antenna located on the roof of a single-story house is typically 5 meters.',
-      title: 'Hotspot Height',
-    },
-    gain_info: {
-      desc:
-        'A value between 1 and 15 to one decimal point. This is provided by your hotspot or antenna manufacturer.',
-      title: 'Antenna TX / RX Gain',
-    },
-    onboarding: {
-      dbi: 'dBi',
-      elevation: 'Height (meters)',
-      gain: 'TX / RX Gain',
-      select: 'Select Antenna',
-      subtitle: 'Submit antenna and height details for your Hotspot.',
-      title: 'Antenna Setup',
-    },
-  },
+
   auth: {
     enter_current: 'Enter your current PIN to continue',
     title: 'Enter Your PIN',

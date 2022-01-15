@@ -28,7 +28,7 @@ const AntennaSetupScreen = () => {
   const navNext = useCallback(async () => {
     if (!antenna) return
 
-    navigation.navigate('HotspotSetupConfirmLocationScreen', {
+    navigation.navigate('ConfirmLocationScreen', {
       ...params,
       gain,
       elevation,
@@ -46,22 +46,12 @@ const AntennaSetupScreen = () => {
         style={styles.keyboardAvoidingView}
         behavior="padding"
       >
-        <Box flex={1} justifyContent="center" paddingBottom="xxl">
+        <Box flex={1} justifyContent="center">
           <Box>
-            <Text
-              variant="h1"
-              marginBottom="s"
-              marginTop="l"
-              maxFontSizeMultiplier={1}
-            >
+            <Text variant="h1" marginBottom="s" maxFontSizeMultiplier={1}>
               {t('antennas.onboarding.title')}
             </Text>
-            <Text
-              variant="subtitle2"
-              numberOfLines={2}
-              adjustsFontSizeToFit
-              maxFontSizeMultiplier={1.3}
-            >
+            <Text variant="subtitle2" numberOfLines={2} adjustsFontSizeToFit>
               {t('antennas.onboarding.subtitle')}
             </Text>
           </Box>
