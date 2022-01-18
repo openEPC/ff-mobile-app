@@ -91,7 +91,6 @@
     "react-native-sodium": "^0.3.9",
     "react-native-svg": "12.1.1",
     "react-redux": "^7.2.2",
-    "redux-thunk": "^2.3.0",
     "tinycolor2": "^1.4.2",
     "use-debounce": "^5.2.0",
     "use-state-with-callback": "^2.0.3"
