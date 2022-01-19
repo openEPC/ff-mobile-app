@@ -25,8 +25,6 @@ export default {
     openLinkError: "Don't know how to open this URL: {{url}}",
   },
   gatewaysScreen: {
-    viewActivity: 'After adding a Hotspot, you can view your account on the ',
-    explorer: 'Helium Explorer',
     addBtn: 'Add Hotspot',
   },
   settingsScreen: {
