@@ -47,8 +47,8 @@ const SettingListItem = ({
 
   const trackColor = useMemo(
     () => ({
-      false: colors.secondaryBackground,
-      true: colors.primaryBackground,
+      false: colors.ghost,
+      true: colors.linkText,
     }),
     [colors],
   )

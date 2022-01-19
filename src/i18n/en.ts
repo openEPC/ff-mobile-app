@@ -62,13 +62,13 @@ export default {
       openLinkError: "Don't know how to open this URL: {{url}}",
     },
     txnConfirmScreen: {
-      title: 'Confirm Gateway Info',
+      title: 'Confirm Hotspot Info',
       publicKey: 'Public Key',
       macAddress: 'MAC Address',
       ownerAddress: 'Owner Address',
     },
     askSetLocationScreen: {
-      title: 'Set Gateway Location',
+      title: 'Set Hotspot Location',
       subtitle:
         'We need to set a location for your Hotspot. We can use your phone to do this.',
       p1: 'First, we’ll ask for permission to access your phone’s location.',
@@ -91,7 +91,7 @@ export default {
       title: 'REGISTERING HOTSPOT',
       subtitle:
         'This can take a few minutes so feel free to close this screen.',
-      next: 'Go to Gateways List',
+      next: 'Go to Hotspots List',
     },
     pickLocationScreen: {
       title: 'Hotspot Location',
@@ -114,7 +114,7 @@ export default {
       elevation: 'Height (meters)',
       gain: 'TX / RX Gain',
       select: 'Select Antenna',
-      subtitle: 'Submit antenna and height details for your Gateway.',
+      subtitle: 'Submit antenna and height details for your Hotspot.',
       title: 'Antenna Setup',
     },
   },
