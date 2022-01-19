@@ -61,20 +61,7 @@ const textVariants = {
 }
 
 const palette = {
-  // charcoal: '#264653',
-  // peacockGreen: '#2A9D8F',
-  // yellow: '#E9C46A',
-  // deepOrange: '#F4A261',
-  // burntSienna: '#E76F51',
-  // black: '#000000',
-  // white: '#FFFFFF',
-  // transparent: '#00000000',
-  // offWhite: '#F9FAFC',
-  // bobcatRed: '#EE2737',
-  // bobcatDarkGrey: '#333333',
-  // bobcatGrey: '#aeaeae',
-
-  blizzardWhite: '#E5E5E5',
+  blizzardWhite: '#F5F5F5',
   boneBlack: '#2F2F2F',
   citrine: '#EACE03',
   ghost: '#C7CCCF',
@@ -85,22 +72,6 @@ const palette = {
 }
 
 export const themeColors = {
-  // ...palette,
-
-  // primary: palette.bobcatRed,
-  // primaryBackground: palette.white,
-  // primaryText: palette.black,
-  // secondaryBackground: palette.offWhite,
-  // secondary: palette.bobcatGrey,
-  // secondaryText: palette.bobcatDarkGrey,
-  // error: palette.bobcatRed,
-  // surface: palette.white,
-  // surfaceText: palette.bobcatDarkGrey,
-  // surfaceSecondary: palette.offWhite,
-  // surfaceSecondaryText: palette.bobcatDarkGrey,
-  // surfaceContrast: palette.bobcatDarkGrey,
-  // surfaceContrastText: palette.white,
-
   ...palette,
 
   primary: palette.citrine,

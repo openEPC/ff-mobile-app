@@ -9,8 +9,6 @@ import GatewayOnboardingNavigator from './GatewayOnboardingNavigator'
 import MainTabs from './main/MainTabNavigator'
 import { useColors } from '../theme/themeHooks'
 import WelcomeScreen from '../features/notSignedIn/WelcomeScreen'
-import LinkAccount from '../features/notSignedIn/LinkAccount'
-import CreateAccount from '../features/notSignedIn/CreateAccount'
 import CreatePinScreen from '../features/pinManagement/CreatePinScreen'
 import ConfirmPinScreen from '../features/pinManagement/ConfirmPinScreen'
 import { RootStackParamList } from './navigationRootTypes'
@@ -40,8 +38,6 @@ const NavigationRoot = () => {
           }}
         >
           <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="LinkAccount" component={LinkAccount} />
-          <Stack.Screen name="CreateAccount" component={CreateAccount} />
         </Stack.Group>
       ) : (
         <Stack.Group

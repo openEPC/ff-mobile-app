@@ -12,8 +12,6 @@ export type LockScreenRequestType =
 
 export type RootStackParamList = {
   Welcome: undefined
-  LinkAccount: undefined
-  CreateAccount: undefined
 
   MainTabs: undefined | { pinVerifiedFor: LockScreenRequestType }
   LockScreen: {

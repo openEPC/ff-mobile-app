@@ -20,16 +20,9 @@ export default {
   },
   welcomeScreen: {
     title: 'Welcome',
-    signIn: 'Sign In',
-    createAccount: 'Create an account',
-  },
-  linkAccountScreen: {
-    signInWith: 'Sign in with:',
-  },
-  createAccountScreen: {
-    stepOne: '1. Download a supported Wallet App',
-    stepTwo: '2. Create account',
-    stepThree: '3. Come back to this app and sign in.',
+    signIn: 'Link Existing Wallet',
+    createAccount: 'Create New Wallet',
+    openLinkError: "Don't know how to open this URL: {{url}}",
   },
   gatewaysScreen: {
     viewActivity: 'After adding a Hotspot, you can view your account on the ',
