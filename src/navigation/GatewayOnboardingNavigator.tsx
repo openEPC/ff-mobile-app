@@ -15,7 +15,6 @@ import TxnProgressScreen from '../features/gateways/onboarding/TxnProgressScreen
 import ConfirmLocationScreen from '../features/gateways/onboarding/ConfirmLocationScreen'
 import SkipLocationScreen from '../features/gateways/onboarding/SkipLocationScreen'
 import AntennaSetupScreen from '../features/gateways/onboarding/AntennaSetupScreen'
-import StartScreen from '../features/gateways/onboarding/StartScreen'
 import TxnConfirmScreen from '../features/gateways/onboarding/TxnConfirmScreen'
 import TxnSubmitedScreen from '../features/gateways/onboarding/TxnSubmitedScreen'
 import { GatewayOnboardingStackParamList } from './gatewayOnboardingNavigatorTypes'
@@ -63,7 +62,6 @@ const GatewayOnboardingNavigator = () => {
         return options
       }}
     >
-      <Stack.Screen name="StartScreen" component={StartScreen} />
       <Stack.Screen name="TxnConfirmScreen" component={TxnConfirmScreen} />
       <Stack.Screen
         name="AskSetLocationScreen"

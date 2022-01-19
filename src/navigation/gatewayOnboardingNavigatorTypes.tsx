@@ -2,7 +2,6 @@ import { Onboarding } from '@helium/react-native-sdk'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 export type GatewayOnboardingStackParamList = {
-  StartScreen: undefined
   TxnConfirmScreen: {
     addGatewayTxn: string
   }
