@@ -76,7 +76,7 @@ export default {
       cancel: "No thanks, I'll set it up later",
     },
     skipLocationScreen: {
-      title: 'Add Hotspot',
+      title: 'Add Location Later',
       subtitle1: 'You have decided to assert location later.',
       subtitle2: 'Update your location later from settings.',
       next: 'Register Hotspot',
