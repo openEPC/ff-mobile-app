@@ -26,6 +26,8 @@ export default {
   },
   gatewaysScreen: {
     addBtn: 'Add Hotspot',
+    noItems: 'No Items',
+    locationNotSet: 'Location not set',
   },
   settingsScreen: {
     sections: {

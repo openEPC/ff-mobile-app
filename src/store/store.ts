@@ -1,14 +1,12 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useStore } from 'react-redux'
 import rootReducer from './rootReducer'
+import { heliumApi } from './helium/heliumApi'
 
 const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware({
-    serializableCheck: false,
-    immutableCheck: false,
-    // TODO: The BigNumber type in some models is not serializable. Ignoring the warning for now.
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(heliumApi.middleware),
 })
 
 export type AppDispatch = typeof store.dispatch
