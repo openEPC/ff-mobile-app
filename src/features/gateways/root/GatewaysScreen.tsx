@@ -69,6 +69,7 @@ const GatewaysScreen = ({ accountAddress }: Props) => {
         title={t('gatewaysScreen.addBtn')}
         onPress={openOnboardingSite}
         color="primary"
+        marginTop="s"
       />
     </Box>
   )
@@ -110,7 +111,12 @@ const GatewaysList = ({ accountAddress }: Props) => {
       data={hotspots}
       renderItem={({ item }) => {
         return (
-          <Box backgroundColor="white" borderRadius="l" flexDirection="row">
+          <Box
+            backgroundColor="white"
+            borderRadius="l"
+            flexDirection="row"
+            marginBottom="s"
+          >
             <Box flex={1} paddingVertical="m" paddingLeft="m">
               <Text
                 variant="body1"
