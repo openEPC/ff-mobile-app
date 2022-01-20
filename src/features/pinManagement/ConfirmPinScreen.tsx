@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../store/store'
 import ConfirmPinView from '../../components/ConfirmPinView'
 import { RootStackParamList } from '../../navigation/navigationRootTypes'
 import { MainTabNavigationProp } from '../../navigation/main/mainTabNavigatorTypes'
-import SafeAreaBox from '../../components/SafeAreaBox'
+import Box from '../../components/Box'
 
 type Route = RouteProp<RootStackParamList, 'ConfirmPinScreen'>
 
@@ -29,11 +29,7 @@ const ConfirmPinScreen = () => {
   )
 
   return (
-    <SafeAreaBox
-      flex={1}
-      backgroundColor="primaryBackground"
-      paddingHorizontal="m"
-    >
+    <Box flex={1} backgroundColor="primaryBackground" paddingHorizontal="m">
       <ConfirmPinView
         originalPin={originalPin}
         title={t('account_setup.confirm_pin.title')}
@@ -41,7 +37,7 @@ const ConfirmPinScreen = () => {
         pinSuccess={pinSuccess}
         onCancel={navigation.goBack}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

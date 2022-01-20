@@ -4,13 +4,12 @@ import { useTranslation } from 'react-i18next'
 import { ActivityIndicator } from 'react-native'
 import { AddGateway, Onboarding } from '@helium/react-native-sdk'
 
-import Box from '../../../components/Box'
 import Text from '../../../components/Text'
 import animateTransition from '../../../utils/animateTransition'
 import { DebouncedButton } from '../../../components/Button'
 import { getAddress } from '../../../utils/secureAccount'
 import useMount from '../../../utils/useMount'
-import SafeAreaBox from '../../../components/SafeAreaBox'
+import Box from '../../../components/Box'
 import {
   GatewayOnboardingNavigationProp,
   GatewayOnboardingStackParamList,
@@ -66,7 +65,7 @@ const TxnConfirmScreen = () => {
   }, [navigation, onboardingRecord, params, publicKey])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -150,7 +149,7 @@ const TxnConfirmScreen = () => {
         onPress={navNext}
         disabled={ownerAddress !== address}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

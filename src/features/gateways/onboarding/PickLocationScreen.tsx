@@ -16,6 +16,7 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet'
+
 import Box from '../../../components/Box'
 import { DebouncedButton } from '../../../components/Button'
 import ImageBox from '../../../components/ImageBox'
@@ -27,7 +28,6 @@ import {
   GatewayOnboardingNavigationProp,
   GatewayOnboardingStackParamList,
 } from '../../../navigation/gatewayOnboardingNavigatorTypes'
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import TouchableOpacityBox from '../../../components/TouchableOpacityBox'
 import { useColors, useSpacing } from '../../../theme/themeHooks'
 import BSHandle from '../../../components/BSHandle'
@@ -103,7 +103,7 @@ const PickLocationScreen = () => {
   const searchSnapPoints = useMemo(() => ['85%'], [])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -177,7 +177,7 @@ const PickLocationScreen = () => {
           <AddressSearchModal onSelectPlace={handleSelectPlace} />
         </BottomSheetModal>
       </BottomSheetModalProvider>
-    </SafeAreaBox>
+    </Box>
   )
 }
 

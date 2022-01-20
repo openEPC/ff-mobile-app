@@ -4,7 +4,6 @@ import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 
 import Box from '../../../components/Box'
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import Text from '../../../components/Text'
 import { DebouncedButton } from '../../../components/Button'
 import HotspotConfigurationPicker from '../../../components/HotspotConfigurationPicker'
@@ -36,7 +35,7 @@ const AntennaSetupScreen = () => {
   }, [antenna, elevation, gain, navigation, params])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -68,7 +67,7 @@ const AntennaSetupScreen = () => {
         onPress={navNext}
         color="primary"
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

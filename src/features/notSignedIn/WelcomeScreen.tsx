@@ -8,7 +8,6 @@ import Toast from 'react-native-simple-toast'
 import { locale } from '../../i18n'
 import Text from '../../components/Text'
 import Box from '../../components/Box'
-import SafeAreaBox from '../../components/SafeAreaBox'
 import { Button } from '../../components/Button'
 
 const WelcomeScreen = () => {
@@ -54,7 +53,7 @@ const WelcomeScreen = () => {
   }, [t, heliumApp])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -78,7 +77,7 @@ const WelcomeScreen = () => {
         onPress={createAccount}
         title={t('welcomeScreen.createAccount')}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

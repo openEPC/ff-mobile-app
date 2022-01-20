@@ -2,7 +2,6 @@ import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import Box from '../../../components/Box'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
@@ -24,7 +23,7 @@ const SkipLocationScreen = () => {
   }, [navigation, params])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -49,7 +48,7 @@ const SkipLocationScreen = () => {
         color="primary"
         onPress={navNext}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

@@ -14,7 +14,7 @@ import ConfirmPinView from '../../components/ConfirmPinView'
 import { MainTabNavigationProp } from '../../navigation/main/mainTabNavigatorTypes'
 import { useAppDispatch } from '../../store/store'
 import appSlice from '../../store/user/appSlice'
-import SafeAreaBox from '../../components/SafeAreaBox'
+import Box from '../../components/Box'
 
 type Route = RouteProp<RootStackParamList, 'LockScreen'>
 
@@ -94,11 +94,7 @@ const LockScreen = () => {
   }, [])
 
   return (
-    <SafeAreaBox
-      flex={1}
-      backgroundColor="primaryBackground"
-      paddingHorizontal="m"
-    >
+    <Box flex={1} backgroundColor="primaryBackground" paddingHorizontal="m">
       <ConfirmPinView
         originalPin={pin || ''}
         title={t('auth.title')}
@@ -107,7 +103,7 @@ const LockScreen = () => {
         onCancel={handleCancel}
         clearable={requestType === 'unlock'}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

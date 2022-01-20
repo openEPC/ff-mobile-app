@@ -12,7 +12,6 @@ import {
 import type { Account } from '@helium/http'
 import { useAsync } from 'react-async-hook'
 
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import Box from '../../../components/Box'
 import ImageBox from '../../../components/ImageBox'
 import { DebouncedButton } from '../../../components/Button'
@@ -76,7 +75,7 @@ const ConfirmLocationScreen = () => {
 
   if (!feeData) {
     return (
-      <SafeAreaBox
+      <Box
         flex={1}
         backgroundColor="primaryBackground"
         paddingHorizontal="m"
@@ -85,14 +84,14 @@ const ConfirmLocationScreen = () => {
         <Box flex={1} justifyContent="center" paddingBottom="xxl">
           <ActivityIndicator color="#687A8C" />
         </Box>
-      </SafeAreaBox>
+      </Box>
     )
   }
 
   const { isFree, hasSufficientBalance, totalStakingAmount } = feeData
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -228,7 +227,7 @@ const ConfirmLocationScreen = () => {
           disabled={isFree ? false : !hasSufficientBalance}
         />
       </Box>
-    </SafeAreaBox>
+    </Box>
   )
 }
 

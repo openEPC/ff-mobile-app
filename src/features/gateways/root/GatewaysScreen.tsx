@@ -6,7 +6,6 @@ import { Linking } from 'react-native'
 
 import { getAddress } from '../../../utils/secureAccount'
 import { Button } from '../../../components/Button'
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import Box from '../../../components/Box'
 
 const GatewaysScreen = () => {
@@ -36,7 +35,7 @@ const GatewaysScreen = () => {
   }, [t, address])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -49,7 +48,7 @@ const GatewaysScreen = () => {
         onPress={openOnboardingSite}
         color="primary"
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

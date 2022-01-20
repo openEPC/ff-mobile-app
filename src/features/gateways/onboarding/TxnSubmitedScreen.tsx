@@ -2,10 +2,10 @@ import React from 'react'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import { useAsync } from 'react-async-hook'
+
 import Box from '../../../components/Box'
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
-import SafeAreaBox from '../../../components/SafeAreaBox'
 import { submitTxn } from '../../../utils/appDataClient'
 import { RootNavigationProp } from '../../../navigation/navigationRootTypes'
 import { GatewayOnboardingStackParamList } from '../../../navigation/gatewayOnboardingNavigatorTypes'
@@ -28,7 +28,7 @@ const TxnSubmitedScreen = () => {
   }, [])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -50,7 +50,7 @@ const TxnSubmitedScreen = () => {
         fullWidth
         title={t('gatewayOnboarding.txnSubmitedScreen.next')}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

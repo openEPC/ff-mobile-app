@@ -9,9 +9,9 @@ import {
   Location,
 } from '@helium/react-native-sdk'
 import { ActivityIndicator, Linking } from 'react-native'
-import Box from '../../../components/Box'
+
 import Text from '../../../components/Text'
-import SafeAreaBox from '../../../components/SafeAreaBox'
+import Box from '../../../components/Box'
 import { hotspotOnChain } from '../../../utils/appDataClient'
 import useAlert from '../../../utils/useAlert'
 import { getSecureItem } from '../../../utils/secureAccount'
@@ -123,7 +123,7 @@ const TxnProgressScreen = () => {
   })
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -137,7 +137,7 @@ const TxnProgressScreen = () => {
           <ActivityIndicator color={primaryText} />
         </Box>
       </Box>
-    </SafeAreaBox>
+    </Box>
   )
 }
 

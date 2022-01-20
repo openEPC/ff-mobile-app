@@ -1,15 +1,15 @@
 import React from 'react'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+
 import { DebouncedButton } from '../../../components/Button'
 import Text from '../../../components/Text'
-import Box from '../../../components/Box'
 import useGetLocation from '../../../utils/useGetLocation'
 import {
   GatewayOnboardingNavigationProp,
   GatewayOnboardingStackParamList,
 } from '../../../navigation/gatewayOnboardingNavigatorTypes'
-import SafeAreaBox from '../../../components/SafeAreaBox'
+import Box from '../../../components/Box'
 
 type Route = RouteProp<GatewayOnboardingStackParamList, 'AskSetLocationScreen'>
 
@@ -29,7 +29,7 @@ const AskSetLocationScreen = () => {
   }
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -75,7 +75,7 @@ const AskSetLocationScreen = () => {
         color="secondary"
         title={t('gatewayOnboarding.askSetLocationScreen.cancel')}
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 

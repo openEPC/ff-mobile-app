@@ -14,7 +14,6 @@ import { isEqual } from 'lodash'
 import { WalletLink } from '@helium/react-native-sdk'
 import { useAsync } from 'react-async-hook'
 
-import SafeAreaBox from '../../components/SafeAreaBox'
 import Text from '../../components/Text'
 import { RootState } from '../../store/rootReducer'
 import { useAppDispatch } from '../../store/store'
@@ -226,7 +225,7 @@ const SettingsScreen = () => {
   const keyExtractor = useCallback((item, index) => item.title + index, [])
 
   return (
-    <SafeAreaBox
+    <Box
       flex={1}
       backgroundColor="primaryBackground"
       paddingHorizontal="m"
@@ -242,7 +241,7 @@ const SettingsScreen = () => {
         // ^ Sometimes on initial page load there is a bug with SectionList
         // where it won't render all items right away. This seems to fix it.
       />
-    </SafeAreaBox>
+    </Box>
   )
 }
 
