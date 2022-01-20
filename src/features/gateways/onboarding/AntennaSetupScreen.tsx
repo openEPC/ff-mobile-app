@@ -45,7 +45,7 @@ const AntennaSetupScreen = () => {
         style={styles.keyboardAvoidingView}
         behavior="padding"
       >
-        <Box flex={1} justifyContent="center">
+        <Box flex={1}>
           <Box>
             <Text variant="h1" marginBottom="s" maxFontSizeMultiplier={1}>
               {t('antennas.onboarding.title')}

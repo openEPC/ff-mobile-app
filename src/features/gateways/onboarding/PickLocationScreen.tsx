@@ -10,7 +10,6 @@ import React, {
 import { useTranslation } from 'react-i18next'
 import { Position } from 'geojson'
 import Search from '@assets/images/search.svg'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import {
   BottomSheetBackdrop,
   BottomSheetModal,
@@ -47,7 +46,6 @@ const PickLocationScreen = () => {
   const [locationName, setLocationName] = useState('')
   const [zoomLevel, setZoomLevel] = useState(2)
   const spacing = useSpacing()
-  const insets = useSafeAreaInsets()
   const searchModal = useRef<BottomSheetModal>(null)
   const { surface } = useColors()
 
@@ -103,23 +101,17 @@ const PickLocationScreen = () => {
   const searchSnapPoints = useMemo(() => ['85%'], [])
 
   return (
-    <Box
-      flex={1}
-      backgroundColor="primaryBackground"
-      paddingHorizontal="m"
-      paddingBottom="m"
-    >
-      <TouchableOpacityBox
-        onPress={handleSearchPress}
-        position="absolute"
-        padding="m"
-        top={insets.top + spacing.s}
-        right={spacing.m}
-        zIndex={1}
-      >
-        <Search width={30} height={30} color="white" />
-      </TouchableOpacityBox>
-      <Box flex={1.2}>
+    <Box flex={1} backgroundColor="primaryBackground">
+      <Box flex={1}>
+        <TouchableOpacityBox
+          onPress={handleSearchPress}
+          position="absolute"
+          top={spacing.m}
+          right={spacing.m}
+          zIndex={1}
+        >
+          <Search width={30} height={30} color="white" />
+        </TouchableOpacityBox>
         <Map
           mapCenter={mapCenter}
           onMapMoved={onMapMoved}
@@ -144,7 +136,7 @@ const PickLocationScreen = () => {
           />
         </Box>
       </Box>
-      <Box backgroundColor="primaryBackground" padding="l">
+      <Box padding="m">
         <Box
           flexDirection="row"
           justifyContent="space-between"
