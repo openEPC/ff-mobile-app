@@ -41,7 +41,7 @@ const AddressSearchModal = ({ onSelectPlace }: Props) => {
 
   const handleSearchChange = useCallback(
     (term) => {
-      triggerAutocompleteSearch.callback(term)
+      triggerAutocompleteSearch(term)
     },
     [triggerAutocompleteSearch],
   )
